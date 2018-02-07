@@ -1,0 +1,136 @@
+
+<div class="row" ng-controller="EmployeeController">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span>Employee Details</span>
+			</div>
+			<div class="panel-body">
+				<form class="form-horizontal" role="form" style="max-width: 530px;">
+					<div class="form-group">
+						<label for="empID" class="col-sm-3 control-label">Employee
+							Id</label>
+						<div class="col-sm-8">
+							<label for="empID" class="col-sm-6 control-label">Employee
+								Id</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="firstName" class="col-sm-3 control-label">Full
+							Name</label>
+						<div class="col-sm-8">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label>
+						</div>
+					</div>
+					<!-- /.form-group -->
+					<div class="form-group">
+						<label class="control-label col-sm-3">Gender</label>
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-sm-4">
+									<label class="radio-inline"> <input type="radio"
+										name="Gender" id="femaleRadio" value="Female"
+										ng-disabled="updateModeOff">Female
+									</label>
+								</div>
+								<div class="col-sm-4">
+									<label class="radio-inline"> <input type="radio"
+										name="Gender" id="maleRadio" value="Male" checked="checked"
+										ng-disabled="updateModeOff">Male
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.form-group -->
+					<div class="form-group">
+						<label for="PhoneNum" class="col-sm-3 control-label">Phone</label>
+						<div class="col-sm-8">
+							<label for="firstName" class="col-sm-6 control-label">0000000000</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-sm-3 control-label">Email</label>
+						<div class="col-sm-8">
+							<label for="firstName" class="col-sm-6 control-label">kuldeepshekhawatcs</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="birthDate" class="col-sm-3 control-label">Date
+							of Birth</label>
+						<div class="col-sm-6">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="joiningDate" class="col-sm-3 control-label">Date
+							of Joining</label>
+						<div class="col-sm-6">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="address" class="col-sm-3 control-label">Address</label>
+						<div class="col-sm-6">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="country" class="col-sm-3 control-label">Country</label>
+						<div class="col-sm-6">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="aadhaarNum" class="col-sm-3 control-label">Aadhaar</label>
+						<div class="col-sm-9">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label>
+							<!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+							<a href="#">Download</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="panLbl" class="col-sm-3 control-label">PAN
+							Number</label>
+						<div class="col-sm-6">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label> <a href="#">Download</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dlicense" class="col-sm-3 control-label">Driving
+							License</label>
+						<div class="col-sm-6">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label> <a href="#">Download</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="verification" class="col-sm-3 control-label">Verification
+							Details</label>
+						<div class="col-sm-6">
+							<label for="firstName" class="col-sm-6 control-label">Full
+								Name</label> <a href="#">Download</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-9">
+							<!-- <button type="button" class="btn btn-primary" ng-show="!updateModeOff">Submit</button> -->
+							<button type="button" class="btn btn-warning"
+								ng-click="editUser(user)">Update</button>
+						</div>
+					</div>
+				</form>
+				<!-- /form -->
+
+			</div>
+
+		</div>
+	</div>
+</div>

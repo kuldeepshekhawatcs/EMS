@@ -9,11 +9,11 @@ var myServices = angular.module('myServices', []);
 myApp.config(function($routeProvider) {
     $routeProvider
     .when("/addEmployee", {
-        templateUrl : "html/AddEmployee.html"
+        templateUrl : "html/UpdateEmployee.html"
               
     })
     .when("/employeelist", {
-        templateUrl : "html/EmployeeListTest.html"
+        templateUrl : "html/EmployeeList.html"
               
     })
     .when("/leaveCalender", {
@@ -26,12 +26,17 @@ myApp.config(function($routeProvider) {
    .when("/leavereport", {
         templateUrl : "html/LeaveReport.html"
     })
-   .when("/editEmployee", {
-        templateUrl : "html/UpdateEmployee.html"
-    })
-    .when("/delete", {
+     .when("/delete", {
         templateUrl : "html/DeletePopUp.html"
     
+    })
+    .when("/viewProfile", {
+        templateUrl : "html/ViewEmployee.html"
+    
+    })
+    .when("/editEmployee", {
+        templateUrl : "html/UpdateEmployee.html"
+              
     })
 });
 
