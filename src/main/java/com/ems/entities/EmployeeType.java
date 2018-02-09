@@ -26,6 +26,18 @@ public class EmployeeType {
     @JoinColumn(name = "role_id")
 	private Role role;
 	
+	@OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "employee_id")
+	private EmployeeType employee;
+	
+	public EmployeeType getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(EmployeeType employee) {
+		this.employee = employee;
+	}
+
 	public Role getRole() {
 		return role;
 	}

@@ -13,8 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.internal.util.IgnoreJava6Requirement;
+import org.springframework.web.bind.annotation.Mapping;
 
 import com.ems.litrals.Country;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employee")
@@ -32,17 +37,19 @@ public class Employee {
 	
 	private String lastName;
 	
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private Date dateOfBirth;
 	
-	private Integer phoneNumber;
+	private String phoneNumber;
 	
 	private String email;
 	
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private Date dateOfJoining;
 	
 	private String address;
 	
-	private Integer pinCode;
+	private String pinCode;
 	
 	private String country;
 	
@@ -50,7 +57,27 @@ public class Employee {
     @JoinColumn(name = "employee_type")
 	private EmployeeType employeeType;
 	
-	private Integer bankAccountNumber;
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "employee_doc")
+	private List<EmployeeDocuments> employeeDoc;
+
+	public List<EmployeeDocuments> getEmployeeDoc() {
+		return employeeDoc;
+	}
+
+	public void setEmployeeDoc(List<EmployeeDocuments> employeeDoc) {
+		this.employeeDoc = employeeDoc;
+	}
+
+	public String getDrivinglicenseNumber() {
+		return drivinglicenseNumber;
+	}
+
+	public void setDrivinglicenseNumber(String drivinglicenseNumber) {
+		this.drivinglicenseNumber = drivinglicenseNumber;
+	}
+
+	private String bankAccountNumber;
 	
 	private String bankName;
 	
@@ -58,11 +85,59 @@ public class Employee {
 	
 	private String 	ifscCode;
 	
-	private Integer salary;
+	@JsonIgnoreProperties(ignoreUnknown = true)
+	private String salary;
 	
+	private String panNumber; 
+	
+	private String drivinglicenseNumber;
+	
+	private Boolean IsPVDocumentUpload;
+	
+	
+	public Boolean getIsPVDocumentUpload() {
+		return IsPVDocumentUpload;
+	}
+
+	public void setIsPVDocumentUpload(Boolean isPVDocumentUpload) {
+		IsPVDocumentUpload = isPVDocumentUpload;
+	}
+
+	public String getDrivingLicenseNumber() {
+		return drivinglicenseNumber;
+	}
+
+	public void setDrivingLicenseNumber(String drivingLicenseNumber) {
+		this.drivinglicenseNumber = drivingLicenseNumber;
+	}
+
+	public String getPanNumber() {
+		return panNumber;
+	}
+
+	public void setPanNumber(String panNumber) {
+		this.panNumber = panNumber;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
 	private Integer leaveBalance;
 	
-		
+	private Gender gender;
+	
+	enum  Gender {
+		MALE,FEMALE;
+	}
+	
+	private String adharNumber;
+	
+	
 	public Integer getEmployeeId() {
 		return employeeId;
 	}
@@ -111,20 +186,28 @@ public class Employee {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Integer getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(Integer phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getAdharNumber() {
+		return adharNumber;
+	}
+
+	public void setAdharNumber(String adharNumber) {
+		this.adharNumber = adharNumber;
 	}
 
 	public Date getDateOfJoining() {
@@ -143,11 +226,11 @@ public class Employee {
 		this.address = address;
 	}
 
-	public Integer getPinCode() {
+	public String getPinCode() {
 		return pinCode;
 	}
 
-	public void setPinCode(Integer pinCode) {
+	public void setPinCode(String pinCode) {
 		this.pinCode = pinCode;
 	}
 
@@ -221,11 +304,11 @@ public class Employee {
 		this.employeeType = employeeType;
 	}
 
-	public Integer getBankAccountNumber() {
+	public String getBankAccountNumber() {
 		return bankAccountNumber;
 	}
 
-	public void setBankAccountNumber(Integer bankAccountNumber) {
+	public void setBankAccountNumber(String bankAccountNumber) {
 		this.bankAccountNumber = bankAccountNumber;
 	}
 
@@ -253,11 +336,11 @@ public class Employee {
 		this.ifscCode = ifscCode;
 	}
 
-	public Integer getSalary() {
+	public String getSalary() {
 		return salary;
 	}
 
-	public void setSalary(Integer salary) {
+	public void setSalary(String salary) {
 		this.salary = salary;
 	}
 

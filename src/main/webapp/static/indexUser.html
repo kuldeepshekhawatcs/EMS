@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp" lang="en">
+<html ng-app="myApp" lang="en" >
 
 <head>
     <title>EMS</title>
@@ -36,14 +36,14 @@
 	<script type="text/javascript" src="js/angularjs/app.js"></script>
 	
 	 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-	    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+     
+     <script src="controller/IndexDashboardController.js"></script>
+     <script src="controller/EmployeeController.js"></script> 
+     <script src="services/homeFactory.js"></script>
+       <script src="controller/LeaveController.js"></script>  
 	
-	<script src="controller/EmployeeController.js"></script>
-	<script src="services/homeFactory.js"></script>
-	<script src="controller/LeaveController.js"></script>
-	<script src="controller/LoginController.js"></script>
-	<script src="model/fileUploadService.js"></script>
-<!-- jQuery -->
+    <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -106,9 +106,9 @@
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
-            
-                <div class="sidebar-nav navbar-collapse">
+            <div class="navbar-default sidebar" role="navigation" ng-controller = "indexDashboardController">
+                
+                <div class="sidebar-nav navbar-collapse" ng-if="adminDiv" id="adminDiv" >
                     <ul class="nav" id="side-menu">
                         
                         <li>
@@ -132,16 +132,33 @@
                         
                     </ul>
                 </div>
-
-				<div class="sidebar-nav navbar-collapse" >
+                
+                 <div class="sidebar-nav navbar-collapse" ng-if="userDiv" id="userDiv">
                     <ul class="nav" id="side-menu">
                         
                         <li>
-                            <a href="#/viewProfile"><i class="fa fa-dashboard fa-fw"></i> View Profile</a>
+                            <a href="#/employeelist"><i class="fa fa-dashboard fa-fw"></i> Employee Management</a>
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Leave Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#/leaveCalender">Leave Calender</a>
+                                </li>
+                                <li>
+                                    <a href="#/leaveUpdate">Leave Update</a>
+                                </li>
+                            </ul>
+							 <li>
+                            <a href="#/leavereport"><i class="fa fa-dashboard fa-fw"></i> Leave Report</a>
+                        </li>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
                     </ul>
                 </div>
-
+                
+                <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
         </nav>

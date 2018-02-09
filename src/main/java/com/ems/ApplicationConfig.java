@@ -12,6 +12,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import com.ems.dao.EmployeeRepository;
 import com.ems.entities.Employee;
@@ -41,7 +42,7 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
 	@Transactional
     @Override
     public void run(String... args) throws Exception {
-
+/*
 		Employee emp = new Employee();
 		emp.setAddress("ram nagar");
 		emp.setBankAccountNumber(1000000001);
@@ -69,11 +70,11 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
 		emp.setLeaveBalance(4);
 		emp.setMiddleName("ddd");
 		emp.setPassword("ram");
-		emp.setPhoneNumber(999999999);
+		emp.setPhoneNumber("999999999");
 		emp.setSalary(5000);
 		type.setRole(role);
 		employeeService.insert(emp);
-		System.out.println("***************"+employeeService.findAll().get(0).getEmployeeType().getRole().getRoleName());
+		System.out.println("***************"+employeeService.findAll().get(0).getEmployeeType().getRole().getRoleName());*/
 	}
 	
 }
