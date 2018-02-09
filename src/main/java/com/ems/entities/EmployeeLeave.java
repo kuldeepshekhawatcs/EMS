@@ -8,18 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.ems.litrals.Country;
 
 @Entity
-@Table(name="leave")
-public class Leave {
+public class EmployeeLeave {
 
 	@Id
-	@Column(name="leave_id")
-	private Integer leaveId;
-	
-	@ManyToOne
+	private int leaveId;
+
+	@ManyToOne@NotNull
 	@JoinColumn(name="employee_id")
 	private Employee employee;
 	

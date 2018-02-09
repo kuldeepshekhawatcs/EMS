@@ -2,6 +2,9 @@ package com.ems.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class EmployeeDocuments {
@@ -9,6 +12,8 @@ public class EmployeeDocuments {
 	@Id
 	private Integer documentId;
 	
+	@ManyToOne@NotNull
+	@JoinColumn(name = "employee_id")
 	private Employee employee;
 	
 	private String documentDescription;

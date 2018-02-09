@@ -3,16 +3,25 @@ package com.ems.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.ems.litrals.Country;
 
 @Entity
+@Table(name="employee")
 public class Employee {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer employeeId;
 	
 	private String password;
@@ -37,6 +46,8 @@ public class Employee {
 	
 	private String country;
 	
+	@OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "employee_type")
 	private EmployeeType employeeType;
 	
 	private Integer bankAccountNumber;
@@ -51,16 +62,14 @@ public class Employee {
 	
 	private Integer leaveBalance;
 	
-	@OneToMany(mappedBy="employee")
-	private List<Leave> leave;
-	
+		
 	public Integer getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Integer employeeId) {
+	/*public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
-	}
+	}*/
 
 	public String getPassword() {
 		return password;
