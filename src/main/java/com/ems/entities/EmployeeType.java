@@ -1,18 +1,17 @@
 package com.ems.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="employee_type")
 public class EmployeeType {
 
-	@Id
+	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="employee_type_id")
 	private Integer employeeTypeId;
 	
@@ -22,30 +21,6 @@ public class EmployeeType {
 	@Column(name="employee_type_description")
 	private String employeeTypeDescription;
 		
-	@OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "role_id")
-	private Role role;
-	
-	@OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "employee_id")
-	private EmployeeType employee;
-	
-	public EmployeeType getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(EmployeeType employee) {
-		this.employee = employee;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
 	@Column(name="leave_granted_per_year")
 	private Integer leavesGrantedPerYear;
 	

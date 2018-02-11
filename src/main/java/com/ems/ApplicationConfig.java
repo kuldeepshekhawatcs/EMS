@@ -1,9 +1,5 @@
 package com.ems;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,13 +8,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
-import com.ems.dao.EmployeeRepository;
-import com.ems.entities.Employee;
-import com.ems.entities.EmployeeType;
-import com.ems.entities.Role;
 import com.ems.service.EmployeeService;
+import com.ems.service.EmployeeTypeService;
 
 @SpringBootApplication
 @EnableJpaRepositories("com.ems.dao")
@@ -26,6 +18,10 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
 
 	@Autowired
 	EmployeeService employeeService;
+	
+	@Autowired
+	private EmployeeTypeService employeeTypeService;
+
 	
 	
 	public static void main(String[] args) {
@@ -75,6 +71,16 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
 		type.setRole(role);
 		employeeService.insert(emp);
 		System.out.println("***************"+employeeService.findAll().get(0).getEmployeeType().getRole().getRoleName());*/
+		
+		/*EmployeeType type = new EmployeeType();
+		type.setEmployeeTypeCode("AA");
+		type.setEmployeeTypeDescription("PERMANENT");
+		type.setLeavesGrantedPerYear(50);
+		Role role = new Role();
+		role.setRoleName("USER");
+		role.setRolePermission(null);
+	//	type.setRole(role);
+		employeeTypeService.insert(type);*/
 	}
 	
 }

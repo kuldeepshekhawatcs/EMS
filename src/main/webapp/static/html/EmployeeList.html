@@ -8,36 +8,51 @@
                     </div>
          </div>
                         <div class="panel-body">
-  <table class="table table-striped table-bordered" ng-table="usersTable" >
+  <table class="table table-striped table-bordered" ng-table="usersTable">
     <thead>
       									<tr> <th>Employee_id</th>
                                         <th>Employee Name</th>
                                         <th>Date of Joining</th>
                                         <th>Cell Number</th>
                                         <th>Date of Birth</th>
-                                        <th>PAN Number</th>
-                                        <th>ADHAR Number</th>
+                                        <th>Email</th>
                                         <th>Address</th>
-                                        <th>Document Verified</th>
+                                        <th>Country</th>
+                                        <th>Employee Type</th>
+                                        <th>Bank Account Number</th>
+                                        <th>Bank Name</th>
+                                        <th>Branch Name</th>
+                                        <th>Bank IFSC</th>
+                                        <th>PAN Number</th>
+                                        <th>Driving License Number</th>
+                                        <th>ADHAR Number</th>
                                         <th>Leave Taken</th>
                                         <th>Leave Balance</th>
 										 <th>Action</th></tr>
     </thead>
     <tbody>
       <tr ng-repeat="user in $data | filter: searchText">
-        <td>{{$index + 1}}</td>
+        <td>{{user.employeeId}}</td>
         <td>
-          {{user.name}}
+          {{user.firstName}} {{user.middleName}} {{user.lastName}}
         </td>
-        <td>{{user.age}}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{user.dateOfJoining}}</td>
+        <td>{{user.phoneNumber}} </td>
+        <td>{{user.dateOfBirth}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.country}}</td>
+        <td>{{user.employeeType.employeeTypeDescription}}</td>
+        <td>{{user.bankAccountNumber}}</td>
+        <td>{{user.bankName}}</td>
+        <td>{{user.branchName}}</td>
+        <td>{{user.ifscCode}}</td>
+        <td>{{user.panNumber}}</td>
+        <td>{{user.drivinglicenseNumber}}</td>
+        <td>{{user.adharNumber}}</td>
+         <td></td>
+          <td></td>
+        
         <td>
 		<span><a href="" class="glyphicon glyphicon-edit" ng-click="editUser(user);$event.preventDefault()" data-popout="true"></a></span> 	
         <span><a href="" class="glyphicon glyphicon-trash" ng-click="deleteUser($event.target.href);$event.preventDefault()" data-popout="true"></a></span>  

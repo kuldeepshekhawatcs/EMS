@@ -1,10 +1,13 @@
 package com.ems.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,14 +26,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employee")
-public class Employee {
+public class Employee implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer employeeId;
 	
 	private String password;
-	
+	  
 	private String firstName;
 	
 	private String middleName;
@@ -57,17 +60,18 @@ public class Employee {
     @JoinColumn(name = "employee_type")
 	private EmployeeType employeeType;
 	
-	@OneToMany(cascade = {CascadeType.ALL})
-	@JoinColumn(name = "employee_doc")
-	private List<EmployeeDocuments> employeeDoc;
+	@OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "role_id")
+	private Role role;
 
-	public List<EmployeeDocuments> getEmployeeDoc() {
-		return employeeDoc;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setEmployeeDoc(List<EmployeeDocuments> employeeDoc) {
-		this.employeeDoc = employeeDoc;
+	public void setRole(Role role) {
+		this.role = role;
 	}
+
 
 	public String getDrivinglicenseNumber() {
 		return drivinglicenseNumber;

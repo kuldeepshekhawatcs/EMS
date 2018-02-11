@@ -1,8 +1,11 @@
 package com.ems.entities;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class EmployeeDocuments {
+public class EmployeeDocuments implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,6 +22,7 @@ public class EmployeeDocuments {
 	
 	@ManyToOne@NotNull
 	@JoinColumn(name = "employee_id")
+	@Basic(fetch = FetchType.LAZY)
 	private Employee employee;
 	
 	private String documentDescription;
@@ -33,7 +37,7 @@ public class EmployeeDocuments {
 		this.doc = doc;
 	}
 
-	private byte[] documentFile;
+	//private byte[] documentFile;
 
 	public Integer getDocumentId() {
 		return documentId;
@@ -59,13 +63,13 @@ public class EmployeeDocuments {
 		this.documentDescription = documentDescription;
 	}
 
-	public byte[] getDocumentFile() {
+/*	public byte[] getDocumentFile() {
 		return documentFile;
 	}
 
 	public void setDocumentFile(byte[] documentFile) {
 		this.documentFile = documentFile;
-	}
+	}*/
 	
 	
 }

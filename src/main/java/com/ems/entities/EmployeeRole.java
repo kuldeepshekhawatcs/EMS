@@ -8,14 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Entity
+//@Entity
 public class EmployeeRole {
 
 	 @Id
 	 @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private Integer id;
-	
 	
 	 @OneToOne
 	 @JoinColumn(name = "employee_id")

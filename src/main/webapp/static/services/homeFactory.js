@@ -1,9 +1,9 @@
 myApp.factory('homeFactory', function($resource){
-	var baseURL = '/RathoreSamaj/register';
+	var baseURL = "";
 	return $resource(baseURL, {}, {
 		'get' : {
 			method : 'GET',
-			url: baseURL+'/getcandidate'
+			url: '/getallemployee'
 		},
 		'query' : {
 			method : 'GET',

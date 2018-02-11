@@ -1,5 +1,5 @@
 myController.controller('EmployeeController',['$scope','$rootScope','fileUploadService','NgTableParams','homeFactory','$location','$window',function($scope,$rootScope,fileUploadService,NgTableParams,homeFactory,$location,$window){
-	$scope.userList = [{name:"kuldeep",age:"25"},{name:"ram",age:"25"}]
+	$scope.userList = {};
 	$scope.input = new Object();
 	$scope.deleteUser = function(id)
 	{
@@ -13,6 +13,14 @@ myController.controller('EmployeeController',['$scope','$rootScope','fileUploadS
   	   
   	}
 	
+	$scope.loadData = function(){
+		homeFactory.get(function(result){
+			$scope.userList = result.employeeList;
+			$scope.displayRecords();
+		});
+	}
+	
+	
 	$scope.displayRecords = function(){  
         $scope.usersTable = new NgTableParams({
 			page: 1,
@@ -22,7 +30,9 @@ myController.controller('EmployeeController',['$scope','$rootScope','fileUploadS
 			data: $scope.userList,
 		});
 	};
-	$scope.displayRecords();
+	
+		
+	$scope.loadData();
 	
 	$scope.showconfirmbox = function () {
 		return $window.confirm("Do you want to continue?");
@@ -40,10 +50,9 @@ myController.controller('EmployeeController',['$scope','$rootScope','fileUploadS
 		$scope.drivingLicenseFile = document.getElementById("drivinglicense").files[0];
 		$scope.pvdFile = document.getElementById("pvd").files[0];
 		
-		
-		formData.append('adhar', $scope.adharFile);
-		formData.append('pan', $scope.panFile);
-		formData.append('license', $scope.drivingLicenseFile);
+		formData.append(document.getElementById("adharupload").files[0].name, $scope.adharFile);
+		formData.append(document.getElementById("pan").files[0].name, $scope.panFile);
+		formData.append(document.getElementById("drivinglicense").files[0].name, $scope.drivingLicenseFile);
 		formData.append('data', angular.toJson($scope.input));
 		
 		fileUploadService.uploadFilesWithData('/addemployee', formData).success(function(response){
