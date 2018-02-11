@@ -14,7 +14,7 @@ myController.controller('EmployeeController',['$scope','$rootScope','fileUploadS
   	}
 	
 	$scope.loadData = function(){
-		homeFactory.get(function(result){
+		homeFactory.getEmpList(function(result){
 			$scope.userList = result.employeeList;
 			$scope.displayRecords();
 		});

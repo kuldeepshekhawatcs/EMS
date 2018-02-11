@@ -12,11 +12,11 @@ public class HolidayCalendar {
 	@Id
 	private Date holidayDate;
 	
-	private Calendar holidayYear;
+	private String holidayYear;
 	
 	private String holidayDescription;
 	
-	private Calendar dayOnHoliday;
+	private String dayOnHoliday;
 
 	public Date getHolidayDate() {
 		return holidayDate;
@@ -26,11 +26,11 @@ public class HolidayCalendar {
 		this.holidayDate = holidayDate;
 	}
 
-	public Calendar getHolidayYear() {
+	public String getHolidayYear() {
 		return holidayYear;
 	}
 
-	public void setHolidayYear(Calendar holidayYear) {
+	public void setHolidayYear(String holidayYear) {
 		this.holidayYear = holidayYear;
 	}
 
@@ -42,11 +42,11 @@ public class HolidayCalendar {
 		this.holidayDescription = holidayDescription;
 	}
 
-	public Calendar getDayOnHoliday() {
+	public String getDayOnHoliday() {
 		return dayOnHoliday;
 	}
 
-	public void setDayOnHoliday(Calendar dayOnHoliday) {
+	public void setDayOnHoliday(String dayOnHoliday) {
 		this.dayOnHoliday = dayOnHoliday;
 	}
 }

@@ -1,7 +1,7 @@
 myApp.factory('homeFactory', function($resource){
 	var baseURL = "";
 	return $resource(baseURL, {}, {
-		'get' : {
+		'getEmpList' : {
 			method : 'GET',
 			url: '/getallemployee'
 		},
@@ -12,6 +12,10 @@ myApp.factory('homeFactory', function($resource){
 		'deleteCandidate' : {
 			method : 'GET',
 			url: baseURL+'/delete'
+		},
+		'getHolidayList':{
+			method : 'GET',
+			url: '/getHolidayList'
 		},
 	});
 });
