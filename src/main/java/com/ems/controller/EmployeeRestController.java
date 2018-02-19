@@ -1,18 +1,20 @@
 package com.ems.controller;
 
 import java.sql.Blob;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.sql.rowset.serial.SerialBlob;
 
+import org.apache.commons.beanutils.BeanPropertyValueEqualsPredicate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,7 +32,12 @@ import com.ems.service.RoleService;
 import com.ems.utilities.EmployeeListDTO;
 import com.ems.utilities.EmployeeUtility;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 
 @RestController
 public class EmployeeRestController {
@@ -87,4 +94,47 @@ public class EmployeeRestController {
 		}
 		return Literals.SUCCESS_MESSAGE;
 	}
+
+	@RequestMapping(value = "/updateemployee", method = RequestMethod.POST)
+	public String updateCandidate(MultipartHttpServletRequest request,@RequestHeader HttpHeaders requestHeader) throws Exception {
+		String employeeData = request.getParameter("data");
+		GsonBuilder builder = new GsonBuilder(); 
+		builder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
+			@Override
+			public Date deserialize(JsonElement json,
+					java.lang.reflect.Type typeOfT, JsonDeserializationContext context)
+					throws JsonParseException {
+				return new Date(json.getAsJsonPrimitive().getAsLong()); 
+			} 
+		});
+		Employee convertedObject = builder.create().fromJson(employeeData,Employee.class);
+		Employee emp = employeeService.update(convertedObject);
+		Iterator<String> itr = request.getFileNames();
+		List<EmployeeDocuments> docList = employeeDocService.getEmployeeAttachmentByEmployeeId(emp.getEmployeeId());
+		while (itr.hasNext()) {
+			String key = itr.next();
+			BeanPropertyValueEqualsPredicate predicate = new BeanPropertyValueEqualsPredicate("documentDescription", key);
+			EmployeeDocuments empDoc = (EmployeeDocuments) org.apache.commons.collections.CollectionUtils.find(docList, predicate);
+			if(emp == null)
+			{
+				empDoc = new EmployeeDocuments();
+			}
+			MultipartFile mpf = request.getFile(key);
+			byte[] bytes = mpf.getBytes();
+			Blob blob = new SerialBlob(bytes);
+			empDoc.setDocumentDescription(key);
+			empDoc.setDoc(blob);
+			employeeDocService.update(empDoc);
+		}
+		return Literals.SUCCESS_MESSAGE;
+	}
+
+	
+	@RequestMapping(value = "/getEmployeeProfile", method = RequestMethod.GET)
+	@ResponseBody
+	public Employee getEmployeeProfile(@RequestParam("employeeId") Integer employeeId) throws Exception{
+		return employeeService.findEmployeeById(employeeId);
+	}
+
+
 }

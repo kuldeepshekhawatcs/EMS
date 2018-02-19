@@ -1,16 +1,15 @@
 myController.controller('EmployeeController',['$scope','$rootScope','fileUploadService','NgTableParams','homeFactory','$location','$window',function($scope,$rootScope,fileUploadService,NgTableParams,homeFactory,$location,$window){
+	
 	$scope.userList = {};
-	$scope.input = new Object();
+	$scope.input = {};
+	
 	$scope.deleteUser = function(id)
 	{
 		if($scope.showconfirmbox());
 	}
 	
 	$scope.editUser = function(data){
-  	  $location.path('/editEmployee');
-  	  //$scope.updateModeOff = false;
-  	  /*.search({candidateid: data.id});*/
-  	   
+		$location.path('/editEmployee').search({editData: data});
   	}
 	
 	$scope.loadData = function(){
@@ -45,15 +44,29 @@ myController.controller('EmployeeController',['$scope','$rootScope','fileUploadS
 	
 	$scope.save = function(){
 		var formData = new FormData();
-		$scope.adharFile = document.getElementById("adharupload").files[0];
-		$scope.panFile = document.getElementById("pan").files[0];
-		$scope.drivingLicenseFile = document.getElementById("drivinglicense").files[0];
-		$scope.pvdFile = document.getElementById("pvd").files[0];
 		
-		formData.append(document.getElementById("adharupload").files[0].name, $scope.adharFile);
-		formData.append(document.getElementById("pan").files[0].name, $scope.panFile);
-		formData.append(document.getElementById("drivinglicense").files[0].name, $scope.drivingLicenseFile);
 		formData.append('data', angular.toJson($scope.input));
+		
+			if(document.getElementById("adharupload").files[0].name != undefined)
+			{
+				$scope.adharFile = document.getElementById("adharupload").files[0];
+				formData.append("adhar", $scope.adharFile);
+			}
+			if(document.getElementById("pan").files[0].name != undefined)
+			{
+				$scope.panFile = document.getElementById("pan").files[0];
+				formData.append("pan", $scope.panFile);
+			}
+			if(document.getElementById("drivinglicense").files[0].name != undefined)
+			{
+				$scope.drivingLicenseFile = document.getElementById("drivinglicense").files[0];
+				formData.append("drivinglicense", $scope.drivingLicenseFile);
+			}
+			if(document.getElementById("pvd").files[0].name != undefined)
+			{
+				$scope.pvdFile = document.getElementById("pvd").files[0];
+				formData.append("pvd", $scope.pvd);
+			}
 		
 		fileUploadService.uploadFilesWithData('/addemployee', formData).success(function(response){
 				if(response=="success"){

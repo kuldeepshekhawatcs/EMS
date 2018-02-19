@@ -7,10 +7,11 @@
                         <input type="text" id="firstName" placeholder="Search Employee" class="form-control" autofocus ng-model="searchText">
                     </div>
          </div>
-                        <div class="panel-body">
-  <table class="table table-striped table-bordered" ng-table="usersTable">
+                        <div class="panel-body" style="overflow-x:scroll;overflow-y:scroll">
+  <table class="table table-striped table-bordered" ng-table="usersTable" cellspacing="0">
     <thead>
-      									<tr> <th>Employee_id</th>
+      									<tr>
+      									 <th>Employee Id</th>
                                         <th>Employee Name</th>
                                         <th>Date of Joining</th>
                                         <th>Cell Number</th>

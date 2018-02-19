@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class EmployeeDocuments implements Serializable{
 
@@ -20,6 +22,7 @@ public class EmployeeDocuments implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer documentId;
 	
+	@JsonIgnore
 	@ManyToOne@NotNull
 	@JoinColumn(name = "employee_id")
 	@Basic(fetch = FetchType.LAZY)
@@ -27,6 +30,7 @@ public class EmployeeDocuments implements Serializable{
 	
 	private String documentDescription;
 	
+	@JsonIgnore
 	private Blob doc;
 	
 	public Blob getDoc() {

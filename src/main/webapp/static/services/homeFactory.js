@@ -1,4 +1,4 @@
-myApp.factory('homeFactory', function($resource){
+myApp.factory('homeFactory', function($resource,$http){
 	var baseURL = "";
 	return $resource(baseURL, {}, {
 		'getEmpList' : {
@@ -17,5 +17,19 @@ myApp.factory('homeFactory', function($resource){
 			method : 'GET',
 			url: '/getHolidayList'
 		},
+		'getEmployeeAttachmentByEmployeeId':{
+			method : 'GET',
+			url: '/getEmployeeAttachmentByEmployeeId',
+			isArray : true,
+		},
+		'deleteAttachmentById':{
+			method : 'DELETE',
+			url: '/deleteAttachmentById',
+		},
+		'getEmployeeProfile':{
+			method : 'GET',
+			url: '/getEmployeeProfile',
+		}
+		
 	});
 });

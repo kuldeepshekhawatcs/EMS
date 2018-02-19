@@ -9,7 +9,7 @@ var myServices = angular.module('myServices', []);
 myApp.config(function($routeProvider) {
     $routeProvider
     .when("/addEmployee", {
-        templateUrl : "html/UpdateEmployee.html"
+        templateUrl : "html/AddEmployee.html"
               
     })
     .when("/employeelist", {

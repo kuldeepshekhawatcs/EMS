@@ -34,9 +34,9 @@ public class EmployeeTypeServiceImpl implements EmployeeTypeService{
 	
 	public EmployeeType findByName(String empTypeName) throws Exception{
 		if(empTypeName.equalsIgnoreCase("REGULAR") || empTypeName.equalsIgnoreCase("CONTRACT"))
-			return employeeTypeRepository.findOne(1);
-		else
 			return employeeTypeRepository.findOne(2);
+		else
+			return employeeTypeRepository.findOne(1);
 	}
 		
 }

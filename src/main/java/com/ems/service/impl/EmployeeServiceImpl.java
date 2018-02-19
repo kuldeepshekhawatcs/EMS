@@ -27,4 +27,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public List<Employee> findAll() throws Exception {
 		return employeeRepository.findAll();
 	}
+
+	@Override
+	public Employee update(Employee convertedObject) throws Exception {
+		return employeeRepository.save(convertedObject);
+	}
+
+	@Override
+	public Employee findEmployeeById(Integer employeeId) {
+		return employeeRepository.findOne(employeeId);
+	}
 }

@@ -133,9 +133,9 @@ public class Employee implements Serializable{
 
 	private Integer leaveBalance;
 	
-	private Gender gender;
+	public Gender gender;
 	
-	enum  Gender {
+	public enum  Gender {
 		MALE,FEMALE;
 	}
 	

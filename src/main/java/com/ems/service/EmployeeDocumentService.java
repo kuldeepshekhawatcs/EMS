@@ -11,4 +11,7 @@ import com.ems.entities.EmployeeDocuments;
 public interface EmployeeDocumentService {
 	public EmployeeDocuments insert(EmployeeDocuments employeeDocument) throws Exception;
 	public List<EmployeeDocuments> findAll() throws Exception;
+	public List<EmployeeDocuments> getEmployeeAttachmentByEmployeeId(Integer employeeId);
+	public void deleteAttachmentById(Integer employeeId);
+	public EmployeeDocuments update(EmployeeDocuments empDoc);
 }

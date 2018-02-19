@@ -9,11 +9,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.assertj.core.util.DateUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ems.entities.Employee;
+import com.ems.entities.Employee.Gender;
 import com.ems.entities.EmployeeType;
 import com.ems.entities.Role;
 import com.google.gson.JsonObject;
@@ -26,34 +29,37 @@ public class EmployeeUtility {
 	public static Employee convertToEmployee(JsonObject json) throws ParseException, JSONException
 	{
 		Employee employee = new Employee();
-		employee.setAddress(json.get("address").getAsString());
-		employee.setAdharNumber(json.get("adharNumber").getAsString());
-		employee.setBankAccountNumber(json.get("bankAccountNumber").getAsString());
-		employee.setBankName(json.get("bankName").getAsString());
-		employee.setBranchName(json.get("branchName").getAsString());
-		employee.setCountry(json.get("country").getAsString());
-		Date doB = formattor.parse(json.get("dateOfBirth").getAsString());
+		employee.setAddress(json.get("address") == null ? null : json.get("address").getAsString());
+		employee.setAdharNumber(json.get("adharNumber") == null ? null :  json.get("adharNumber").getAsString());
+		employee.setBankAccountNumber(json.get("bankAccountNumber") == null ? null : json.get("bankAccountNumber").getAsString());
+		employee.setBankName(json.get("bankName").getAsString() == null ? null : json.get("bankName").getAsString());
+		employee.setBranchName(json.get("branchName").getAsString() == null ? null : json.get("branchName").getAsString());
+		employee.setCountry(json.get("country").getAsString() == null ? null : json.get("country").getAsString());
+		Date doB = null ;
+		Date doJ = null; 
+		try{
+		doB = formattor.parse(json.get("dateOfBirth").getAsString() == null ? null : json.get("dateOfBirth").getAsString());
+		doJ = formattor.parse(json.get("dateOfJoining").getAsString() == null ? null : json.get("dateOfJoining").getAsString()); 
+		}catch(Exception e)
+		{
+			doB =new Date(Long.valueOf(json.get("dateOfBirth").getAsString()));
+			doJ = new Date(Long.valueOf(json.get("dateOfJoining").getAsString()));
+		}
 		employee.setDateOfBirth(doB);
-		Date doJ = formattor.parse(json.get("dateOfJoining").getAsString());
 		employee.setDateOfJoining(doJ);
-		employee.setDrivingLicenseNumber(json.get("drivinglicenseNumber").getAsString());
-		//employee.setEmail(json.get("email").getAsString());
-		employee.setFirstName(json.get("firstName").getAsString());
-		
-		//employee.setGender();
-		
-		employee.setIfscCode(json.get("ifscCode").getAsString());
+		employee.setDrivingLicenseNumber(json.get("drivinglicenseNumber").getAsString() == null ? null : json.get("drivinglicenseNumber").getAsString());
+		employee.setEmail(json.get("email").getAsString() == null ? null : json.get("email").getAsString());
+		employee.setFirstName(json.get("firstName").getAsString() == null ? null : json.get("firstName").getAsString());
+		employee.setIfscCode(json.get("ifscCode").getAsString() == null ? null : json.get("ifscCode").getAsString());
 		employee.setIsPVDocumentUpload(false);
-		employee.setLastName(json.get("lastName").getAsString());
-		employee.setLeaveBalance(0);
-		employee.setMiddleName(json.get("middleName").getAsString());
-		employee.setPanNumber(json.get("panNumber").getAsString());
-		employee.setPhoneNumber(json.get("phoneNumber").getAsString());
-		employee.setPinCode(json.get("pinCode").getAsString());
-		EmployeeType employeeType = new EmployeeType();
-		employeeType.setEmployeeTypeDescription("PERMANENT");
-		employeeType.setLeavesGrantedPerYear(50);
-		employee.setPinCode(json.get("pinCode").getAsString());
+		employee.setLastName(json.get("lastName").getAsString() == null ? null : json.get("lastName").getAsString());
+		employee.setLeaveBalance(null);
+		employee.setMiddleName(json.get("middleName").getAsString() == null ? null : json.get("middleName").getAsString());
+		employee.setPanNumber(json.get("panNumber").getAsString() == null ? null : json.get("panNumber").getAsString());
+		employee.setPhoneNumber(json.get("phoneNumber").getAsString() == null ? null : json.get("phoneNumber").getAsString());
+		employee.setPinCode(json.get("pinCode").getAsString() == null ? null : json.get("pinCode").getAsString());
+		if(json.get("gender").getAsString().equalsIgnoreCase("MALE"))	employee.setGender(Gender.MALE);
+		else  employee.setGender(Gender.FEMALE);
 		return employee;
 	}
 	
