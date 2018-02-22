@@ -20,6 +20,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public Employee insert(Employee employee) throws Exception{
+		employee.setUserName(employee.getPhoneNumber());
+		employee.setPassword("admin");
 		return employeeRepository.save(employee);
 	}
 	
@@ -36,5 +38,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public Employee findEmployeeById(Integer employeeId) {
 		return employeeRepository.findOne(employeeId);
+	}
+
+	@Override
+	public Employee validateCredentials(String username, String password) {
+			return employeeRepository.validateCredentials(username,password);
 	}
 }

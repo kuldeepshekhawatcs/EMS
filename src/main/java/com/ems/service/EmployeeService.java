@@ -13,4 +13,5 @@ public interface EmployeeService {
 	public List<Employee> findAll() throws Exception;
 	public Employee update(Employee convertedObject) throws Exception;
 	public Employee findEmployeeById(Integer employeeId);
+	public Employee validateCredentials(String username,String password);
 }

@@ -12,9 +12,9 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 		    if(obj.documentDescription == data)
 		    	homeFactory.deleteAttachmentById({documentId : obj.documentId})
 				.$promise.then(function(data) {
-					if(data == "success")
+					if(data == "success" )
 					{
-						
+						alert("Sucessfully Removed");
 					}
 			        }, function(data) {
 			          alert("Something went wrong !!");

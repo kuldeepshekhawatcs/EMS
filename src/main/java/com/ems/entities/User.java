@@ -1,37 +1,23 @@
 package com.ems.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
-@Entity
-public class User {
+@MappedSuperclass
+public abstract class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Transient
 	private Integer id;
 	
 	private String userName;
 
 	private String password;
 	
-	@NotNull
-	@OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "employee_id")
-	private Employee employee;
-
-	
-	public Employee getEmployee() {
-		return employee;
-	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 	public String getUserName() {
 		return userName;
 	}

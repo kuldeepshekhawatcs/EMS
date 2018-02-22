@@ -47,22 +47,22 @@ myController.controller('EmployeeController',['$scope','$rootScope','fileUploadS
 		
 		formData.append('data', angular.toJson($scope.input));
 		
-			if(document.getElementById("adharupload").files[0].name != undefined)
+			if(document.getElementById("adharupload").files[0] != undefined)
 			{
 				$scope.adharFile = document.getElementById("adharupload").files[0];
 				formData.append("adhar", $scope.adharFile);
 			}
-			if(document.getElementById("pan").files[0].name != undefined)
+			if(document.getElementById("pan").files[0] != undefined)
 			{
 				$scope.panFile = document.getElementById("pan").files[0];
 				formData.append("pan", $scope.panFile);
 			}
-			if(document.getElementById("drivinglicense").files[0].name != undefined)
+			if(document.getElementById("drivinglicense").files[0] != undefined)
 			{
 				$scope.drivingLicenseFile = document.getElementById("drivinglicense").files[0];
 				formData.append("drivinglicense", $scope.drivingLicenseFile);
 			}
-			if(document.getElementById("pvd").files[0].name != undefined)
+			if(document.getElementById("pvd").files[0] != undefined)
 			{
 				$scope.pvdFile = document.getElementById("pvd").files[0];
 				formData.append("pvd", $scope.pvd);

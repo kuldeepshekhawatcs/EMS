@@ -8,7 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    
+    
+   <script type="text/javascript" src="generic/angular.min.js"></script>
+	<script type="text/javascript" src="generic/angular-route.min.js"></script>
+	<script type="text/javascript" src="generic/angular-resource.min.js"></script>
+	<script type="text/javascript" src="generic/ng-file-upload-shim.min.js"></script>
+	<script type="text/javascript" src="generic/ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="generic/ngDialog.min.js"></script>
+	<script type="text/javascript" src="generic/ng-table.js"></script>
+	
+	
+	<script type="text/javascript" src="js/angularjs/app.js"></script>
+	<script src="services/homeFactory.js"></script>
+	<script src="model/fileUploadService.js"></script>
+	<script src="controller/LoginController.js"></script>	
+	
+	
     <title>Please keep you name here</title>
 
     <!-- Bootstrap Core CSS -->
@@ -38,24 +54,16 @@
   
   <h2 class="login-header">Log in</h2>
 
-  <form class="login-container" action="/static/index.html#/employeelist">
-    <p><input type="text" placeholder="username"></p>
-    <p><input type="password" placeholder="Password"></p>
-    <p><input type="submit" value="Log in"></p>
+  <form class="login-container" >
+    <p><input type="text" placeholder="username" ng-model="user.userName"></p>
+    <p><input type="password" placeholder="Password" ng-model="user.password"></p>
+    <p><input type="submit" value="Log in" ng-click="submitUserCredentials(user)"></p>
   </form>
 </div>
 
    
     <!-- /#wrapper -->
-	<script type="text/javascript" src="generic/angular.min.js"></script>
-	<script type="text/javascript" src="generic/angular-route.min.js"></script>
-	<script type="text/javascript" src="generic/angular-resource.min.js"></script>
-	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
-	<script type="text/javascript" src="js/angularjs/app.js"></script>
-	 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
+	
 	
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>

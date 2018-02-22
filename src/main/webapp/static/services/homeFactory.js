@@ -29,6 +29,10 @@ myApp.factory('homeFactory', function($resource,$http){
 		'getEmployeeProfile':{
 			method : 'GET',
 			url: '/getEmployeeProfile',
+		},
+		'submitUserCredentials':{
+			method : 'GET',
+			url: '/submitUserCredentials',
 		}
 		
 	});

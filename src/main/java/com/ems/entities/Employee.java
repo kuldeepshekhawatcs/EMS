@@ -26,18 +26,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employee")
-public class Employee implements Serializable{
+public class Employee extends User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer employeeId;
-	
-	private String password;
 	  
 	private String firstName;
 	
 	private String middleName;
 	
+	public Integer getEmployeeId() {
+		return employeeId;
+	}
+
 	private String lastName;
 	
 	@JsonIgnoreProperties(ignoreUnknown = true)
@@ -142,22 +144,15 @@ public class Employee implements Serializable{
 	private String adharNumber;
 	
 	
-	public Integer getEmployeeId() {
+	/*public Integer getEmployeeId() {
 		return employeeId;
-	}
+	}*/
 
 	/*public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}*/
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
+	
 	public String getFirstName() {
 		return firstName;
 	}

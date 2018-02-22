@@ -136,5 +136,10 @@ public class EmployeeRestController {
 		return employeeService.findEmployeeById(employeeId);
 	}
 
+	@RequestMapping(value = "/submitUserCredentials", method = RequestMethod.GET)
+	@ResponseBody
+	public Employee submitUserCredentials(@RequestParam("username") String username,@RequestParam("password") String password) throws Exception{
+		return employeeService.validateCredentials(username,password);
+	}
 
 }

@@ -38,6 +38,10 @@ myApp.config(function($routeProvider) {
         templateUrl : "html/UpdateEmployee.html"
               
     })
+     .when("/applyLeave", {
+        templateUrl : "html/ApplyLeave.html"
+    })
+    
 });
 
 

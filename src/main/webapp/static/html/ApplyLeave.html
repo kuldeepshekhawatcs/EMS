@@ -1,0 +1,243 @@
+ <div class="row">
+                                <div class="col-xs-3">
+                                   <!-- <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> -->
+                                   <a class="btn btn-lg btn-success" href="#">
+  									<i class="fa fa-flag fa-2x pull-left"></i> Font Awesome<br>Version 4.7.0</a>
+                                </div> 
+                                 <div class="col-xs-2 text-right">
+                                    <div class="huge">13</div>
+                                    <div>Support Tickets!</div>
+                                </div>   
+                   </div>
+ 
+ <div class="row" ng-controller="LeaveController">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+          <span>Employee</span>  
+                        </div>
+              <div class="panel-body">
+               <form class="form-horizontal" role="form" style="max-width: 530px;">
+               <div class="form-group">
+                    <label for="empID" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="firstName" placeholder="First Name" class="form-control" ng-model="input.firstName" autofocus >
+                    </div>
+                </div>
+               <div class="form-group">
+                    <label for="middleName" class="col-sm-3 control-label">Middle Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="middleName" placeholder="Middle Name" class="form-control" ng-model="input.middleName" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="lastName" placeholder="Last Name" class="form-control" ng-model="input.lastName" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                    </div>
+                </div>
+                <!-- /.form-group -->
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Gender</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="Gender" value="FEMALE" id="femaleRadio"  ng-model="input.gender">Female
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="Gender" id="maleRadio" value="MALE" ng-model = "input.gender">Male
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <label for="PhoneNum" class="col-sm-3 control-label">Phone</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="phoneNumber" placeholder="Mobile Number" class="form-control" ng-model="input.phoneNumber">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" id="email" placeholder="Email"  class="form-control" ng-model="input.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+                    <div class="col-sm-6">
+                        <input type="date" id="birthDate" class="form-control" ng-model="input.dateOfBirth" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="joiningDate" class="col-sm-3 control-label">Date of Joining</label>
+                    <div class="col-sm-6">
+                        <input type="date" id="joiningDate" class="form-control" ng-model="input.dateOfJoining" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="address" placeholder="Address" class="form-control" ng-model="input.address" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label">Pin Code</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="pinCode" placeholder="Pin Code" class="form-control" ng-model="input.pinCode" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country" class="col-sm-3 control-label">Country</label>
+                    <div class="col-sm-6">
+                        <select id="country" class="form-control" ng-model="input.country">
+                          <!--   <option>Afghanistan</option>
+                            <option>Bahamas</option>
+                            <option>Cambodia</option>
+                            <option>Denmark</option>
+                            <option>Ecuador</option>
+                            <option>Fiji</option>
+                            <option>Gabon</option>
+                            <option>Haiti</option> -->
+                            <option selected="selected" value="INDIA">India</option>
+                        </select>
+                    </div>
+                </div> 
+                
+                 <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label">Bank Account Number</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="bankAccount" placeholder="Bank Account Number" class="form-control" ng-model="input.bankAccountNumber" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                    </div>
+                </div>
+                
+                 <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label">Bank Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="bankName" placeholder="Bank Name" class="form-control" ng-model="input.bankName" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                    </div>
+                </div>
+                
+                 <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label">Branch Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="branchaddress" placeholder="Branch Name" class="form-control" ng-model="input.branchName" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="col-sm-3 control-label">IFSC Code</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="ifsc" placeholder="IFSC Code" class="form-control" ng-model="input.ifscCode" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="aadhaarNum" class="col-sm-3 control-label">Aadhaar</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="aadhaarNum" placeholder="12 Digit Unique Aadhaar Number" class="form-control" value="1241-1122-2333-1111" autofocus ng-model="input.adharNumber">
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+						    <span class="btn btn-primary btn-file"><span class="fileupload-new">Select Aadhaar File</span>
+						    <span class="fileupload-exists">Change File</span>
+						    <input type="file" id="adharupload" ng-model="input.adharFile" ngf-select="" name="adhar"/></span>
+						    <span class="fileupload-preview"></span>
+						    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">x</a>
+						</div>
+					</div>
+					</div>
+                <div class="form-group">
+                    <label for="panLbl" class="col-sm-3 control-label">PAN Number</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="panNum" placeholder="PAN Number" class="form-control" value="FEJP4448O" autofocus ng-model="input.panNumber" name="pan">
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+						    <span class="btn btn-primary btn-file"><span class="fileupload-new">Select PAN File</span>
+						    <span class="fileupload-exists">Change File</span>
+						    <input type="file" ngf-select=""  id= "pan" ng-model="input.panFile"/></span>
+						    <span class="fileupload-preview"></span>
+						    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">x</a>
+						</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dlicense" class="col-sm-3 control-label">Driving License</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="dlNum" placeholder="Driving License Number" class="form-control" value="MH/14/38947/3847683" autofocus ng-model="input.drivinglicenseNumber">
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+							<span class="btn btn-primary btn-file"><span class="fileupload-new">Select Driving License File</span>
+							<span class="fileupload-exists">Change File</span>
+							<input  type="file"   id= "drivinglicense" ngf-src = "input.drivingLicenseFile" ng-model="input.drivingLicenseFile" name="license"/></span>
+							<span class="fileupload-preview"></span>
+							<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">x</a>
+						</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="verification" class="col-sm-3 control-label">Verification Details</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="verficationDtl" placeholder="Verification Details" class="form-control" autofocus >
+                        <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+							<span class="btn btn-primary btn-file"><span class="fileupload-new">Select Verification Document File</span>
+							<span class="fileupload-exists">Change File</span>         
+							<input id="pvd" ngf-select=""  type="file" ng-model="input.pvd"/></span>
+							<span class="fileupload-preview"></span>
+							<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">x</a>
+						</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country" class="col-sm-3 control-label">Employee Type</label>
+                    <div class="col-sm-6">
+                        <select id="Employee Type" class="form-control" ng-model="input.employeeType">
+                            <option>PERMANENT</option>
+                            <option>CONTRACT</option>
+                        </select>
+                    </div>
+                </div> 
+                 <div class="form-group">
+                    <label for="country" class="col-sm-3 control-label">Role</label>
+                    <div class="col-sm-6">
+                        <select id="role" class="form-control" ng-model="input.role">
+                            <option>ADMIN</option>
+                            <option>EMPLOYEE</option>
+                            <option>MANAGER</option>
+                        </select>
+                    </div>
+                </div> 
+                
+                
+            <!-- /.form-group -->
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" id="password" placeholder="Password" class="form-control" ng-model="input.password">
+                        <span class="help-block">Enter Current User password to update data</span>
+                    </div>
+                </div>
+         <div class="row">
+        <div class="col-sm-6 col-sm-offset-9">
+        <button type="button" class="btn btn-success" ng-click="save(user)">Save</button>
+		 <button type="button" class="btn btn-warning" ng-click="editUser(user)">Update</button> 
+        </div>
+           </div>
+            </form> 
+              
+              </div>          
+                        
+                        </div>
+             </div>
+             </div>
