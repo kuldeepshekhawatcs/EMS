@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.sql.rowset.serial.SerialBlob;
+import javax.websocket.Session;
 
 import org.apache.commons.beanutils.BeanPropertyValueEqualsPredicate;
 import org.apache.log4j.Logger;
@@ -139,7 +140,14 @@ public class EmployeeRestController {
 	@RequestMapping(value = "/submitUserCredentials", method = RequestMethod.GET)
 	@ResponseBody
 	public Employee submitUserCredentials(@RequestParam("username") String username,@RequestParam("password") String password) throws Exception{
-		return employeeService.validateCredentials(username,password);
+		try{
+		Employee emp = employeeService.validateCredentials(username,password);
+		if(null == emp) throw new Exception("Invalid Credentials");
+		return emp;
+		}catch (Exception e) {
+			throw e;
+		}
+		
 	}
 
 }

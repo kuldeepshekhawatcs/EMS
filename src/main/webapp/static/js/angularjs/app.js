@@ -41,6 +41,9 @@ myApp.config(function($routeProvider) {
      .when("/applyLeave", {
         templateUrl : "html/ApplyLeave.html"
     })
+    .when("/leaveStatus", {
+        templateUrl : "html/LeaveStatus.html"
+    })
     
 });
 

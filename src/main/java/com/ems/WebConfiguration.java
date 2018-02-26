@@ -11,5 +11,10 @@ public class WebConfiguration  extends WebMvcConfigurerAdapter{
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 	    registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
-
+	
+	 /* @Override
+	    public void addViewControllers(ViewControllerRegistry registry) {
+	        registry.addRedirectViewController("/", "/static/index.html");
+	    }*/
+	  
 }

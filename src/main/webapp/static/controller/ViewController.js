@@ -2,10 +2,8 @@ myController.controller('ViewController',['$scope','$rootScope','fileUploadServi
 	
 	$scope.input = {};
 	
-	$scope.employeeId = 2; 
-	
-		$scope.getEmployeeProfile = function() {	
-			homeFactory.getEmployeeProfile({employeeId : $scope.employeeId})
+		$scope.getEmployeeProfile = function() {
+			homeFactory.getEmployeeProfile({employeeId : $rootScope.employeeId})
 			.$promise.then(function(data) {
 				if(data != undefined)
 			{

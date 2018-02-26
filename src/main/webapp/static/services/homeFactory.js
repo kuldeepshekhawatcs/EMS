@@ -33,6 +33,23 @@ myApp.factory('homeFactory', function($resource,$http){
 		'submitUserCredentials':{
 			method : 'GET',
 			url: '/submitUserCredentials',
+		},
+		'getLeaveCountByEmployeeId' : {
+			method : 'GET',
+			url: '/getLeaveCountByEmployeeId',
+		},
+		'applyLeave' : {
+			url : '/applyLeave',
+			method : 'POST'
+		},
+		'getallLeaveRequested' : {
+			url : '/getallLeaveRequested',
+			method : 'GET',
+			isArray : true,
+		},
+		'updateLeaveStatus' : {
+			url : '/updateLeaveStatus',
+			method : 'PUT',
 		}
 		
 	});

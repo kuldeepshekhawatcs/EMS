@@ -1,0 +1,35 @@
+<div class="panel panel-default" ng-controller="LeaveController">
+                        
+                        <div class="panel-body" style="overflow-x:scroll;overflow-y:scroll">
+  <table class="table table-striped table-bordered" ng-table="leaveAppliedTable" cellspacing="0">
+    <thead>
+      									<tr>
+      									<th>Employee Id</th>
+                                        <th>Employee Name</th>
+                                        <th>Cell Number</th>
+                                        <th>Email</th>
+                                        <th>Employee Type</th>
+                                        <th>Leave Balance</th>
+                                        <th>Leave Status</th>
+										<th>Approve/Reject</th>
+										</tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="leave in leaveAppliedList">
+        <td>{{leave.employee.employeeId}}</td>
+        <td>
+          {{leave.employee.firstName}} {{leave.employee.middleName}} {{leave.employee.lastName}}
+        </td>
+        <td>{{leave.employee.phoneNumber}} </td>
+        <td>{{leave.employee.email}}</td>
+        <td>{{leave.employee.employeeType.employeeTypeDescription}}</td>
+        <td>{{leave.employee.leaveBalance}}</td>
+        <td>{{leave.leaveStatus}}</td>
+        <td>
+    	<button type="button" class="btn btn-info btn-circle" ng-click="updateStatus('APPROVED',leave)"><i class="fa fa-check"></i></button>
+    	<button type="button" class="btn btn-warning btn-circle" ng-click="updateStatus('REJECT',leave)"><i class="fa fa-times"></i></button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>

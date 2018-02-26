@@ -20,9 +20,7 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
 	EmployeeService employeeService;
 	
 	@Autowired
-	private EmployeeTypeService employeeTypeService;
-
-	
+	private EmployeeTypeService employeeTypeService;  
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ApplicationConfig.class, args);
@@ -32,8 +30,6 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
 		return application.sources(ApplicationConfig.class);
 	}
-	
-
 	
 	@Transactional
     @Override

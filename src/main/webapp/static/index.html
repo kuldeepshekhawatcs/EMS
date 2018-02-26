@@ -45,6 +45,7 @@
 	<script src="model/fileUploadService.js"></script>
 	<script src="controller/EmployeeEditController.js"></script>
 	<script src="controller/ViewController.js"></script>
+	<script src="controller/LoginController.js"></script>	
 	
 <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -65,11 +66,31 @@
     
     <!-- File Upload JavaScript -->
 	<script src="js/fileUpload.js"></script>
+	<link rel="stylesheet" href="dist/css/login.css">
 </head>
 
-<body>
+<body ng-controller="LoginController">
+	<div class="login"  ng-show="showlogin">
+		<div class="login-triangle"></div>
 
-    <div id="wrapper">
+		<h2 class="login-header">Log in</h2>
+
+		<form class="login-container">
+			<p>
+				<input type="text" placeholder="username" ng-model="user.userName">
+			</p>
+			<p>
+				<input type="password" placeholder="Password"
+					ng-model="user.password">
+			</p>
+			<p>
+				<input type="submit" value="Log in"
+					ng-click="submitUserCredentials(user)">
+			</p>
+		</form>
+	</div>
+
+	<div id="wrapper" ng-if="showHome">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -80,7 +101,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Title here</a>
+                <a class="navbar-brand" href="index.html">Employee Managment System</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -91,14 +112,14 @@
                
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" data-toggle="dropdown" >
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                       <!--  <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
+                        </li> -->
                         <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -111,7 +132,7 @@
 
             <div class="navbar-default sidebar" role="navigation">
             
-                <div class="sidebar-nav navbar-collapse">
+                <div class="sidebar-nav navbar-collapse" ng-show="showEmployeeManagement">
                     <ul class="nav" id="side-menu">
                         
                         <li>
@@ -130,18 +151,25 @@
 							 <li>
                             <a href="#/leavereport"><i class="fa fa-dashboard fa-fw"></i> Leave Report</a>
                         </li>
+                        <li>
+                            <a href="#/leaveStatus"><i class="fa fa-dashboard fa-fw"></i> Leave Requested</a>
+                        </li>
                             <!-- /.nav-second-level -->
                         </li>
-                        
                     </ul>
                 </div>
 
-				<div class="sidebar-nav navbar-collapse" >
+				<div class="sidebar-nav navbar-collapse" ng-show="profileManagement">
                     <ul class="nav" id="side-menu">
                         
                         <li>
                             <a href="#/viewProfile"><i class="fa fa-dashboard fa-fw"></i> View Profile</a>
                         </li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
                           <li>
                             <a href="#/applyLeave"><i class="fa fa-dashboard fa-fw"></i> Apply Leave</a>
                         </li>
