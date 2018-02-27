@@ -12,6 +12,7 @@ import org.apache.commons.beanutils.BeanPropertyValueEqualsPredicate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,11 +26,13 @@ import com.ems.entities.Employee;
 import com.ems.entities.EmployeeDocuments;
 import com.ems.entities.EmployeeType;
 import com.ems.entities.Role;
+import com.ems.entities.User;
 import com.ems.litrals.Literals;
 import com.ems.service.EmployeeDocumentService;
 import com.ems.service.EmployeeService;
 import com.ems.service.EmployeeTypeService;
 import com.ems.service.RoleService;
+import com.ems.utilities.EmployeeDTO;
 import com.ems.utilities.EmployeeListDTO;
 import com.ems.utilities.EmployeeUtility;
 import com.google.gson.Gson;
@@ -71,11 +74,11 @@ public class EmployeeRestController {
 			@RequestHeader HttpHeaders requestHeader) throws Exception {
 
 		String employeeData = request.getParameter("data");
-		JsonObject convertedObject = new Gson().fromJson(employeeData,
-				JsonObject.class);
+		EmployeeDTO convertedObject = new Gson().fromJson(employeeData,
+				EmployeeDTO.class);
 		Employee employee = EmployeeUtility.convertToEmployee(convertedObject);
-		String roleName = convertedObject.get("role").getAsString();
-		String employeeTypeName = convertedObject.get("employeeType").getAsString();
+		String roleName = convertedObject.getRole();
+		String employeeTypeName = convertedObject.getEmployeeType();
 		Role role = roleService.findByName(roleName);
 		EmployeeType empType = employeeTypeService.findByName(employeeTypeName);
 		employee.setRole(role);
@@ -89,7 +92,7 @@ public class EmployeeRestController {
 			byte[] bytes = mpf.getBytes();
 			Blob blob = new SerialBlob(bytes);
 			empDoc.setDocumentDescription(key);
-			empDoc.setEmployee(emp);
+			empDoc.setUser(emp.getUser());
 			empDoc.setDoc(blob);
 			employeeDocService.insert(empDoc);
 		}
@@ -137,17 +140,23 @@ public class EmployeeRestController {
 		return employeeService.findEmployeeById(employeeId);
 	}
 
-	@RequestMapping(value = "/submitUserCredentials", method = RequestMethod.GET)
+	@RequestMapping(value = "/submitUserCredentials", method = RequestMethod.POST)
 	@ResponseBody
-	public Employee submitUserCredentials(@RequestParam("username") String username,@RequestParam("password") String password) throws Exception{
+	public User submitUserCredentials(@RequestBody User user) throws Exception{
 		try{
-		Employee emp = employeeService.validateCredentials(username,password);
-		if(null == emp) throw new Exception("Invalid Credentials");
-		return emp;
+		user = employeeService.validateCredentials(user.getUserName(),user.getPassword());
+		if(null == user) throw new Exception("Invalid Credentials");
+		return user;
 		}catch (Exception e) {
 			throw e;
 		}
 		
+	}
+	
+	@RequestMapping(value = "/findEmployeeByUserId", method = RequestMethod.GET)
+	@ResponseBody
+	public Employee findEmployeeByUserId(@RequestParam("userId") Integer userId) throws Exception{
+		return employeeService.findEmployeeByUserId(userId);
 	}
 
 }

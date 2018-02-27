@@ -4,7 +4,7 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 	var editEmployeeData = $location.search();
 	$scope.input = angular.copy(editEmployeeData.editData);
 	$scope.input.availableDocs = {};
-	
+	alert(JSON.stringify($scope.input));
 	$scope.removeAttachment = function(data)
 	{
 		for (var key in $scope.input.availableDocs) {
@@ -31,7 +31,7 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 		    }
 	}
 	
-	homeFactory.getEmployeeAttachmentByEmployeeId({employeeId : $scope.input.employeeId})
+	homeFactory.getEmployeeAttachmentByEmployeeId({employeeId : $scope.input.user.id})
 			.$promise.then(function(data) {
 				if(data != undefined)
 			{

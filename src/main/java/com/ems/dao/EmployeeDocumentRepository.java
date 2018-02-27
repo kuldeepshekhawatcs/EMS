@@ -13,6 +13,6 @@ import com.ems.entities.EmployeeDocuments;
 @Repository
 public interface EmployeeDocumentRepository extends JpaRepository<EmployeeDocuments, Integer>{
 	
-	@Query("select e from EmployeeDocuments e where e.employee.employeeId = :employeeId")
-	public List<EmployeeDocuments> getEmployeeAttachmentByEmployeeId(@Param("employeeId")Integer employeeId);
+	@Query("select e from EmployeeDocuments e where e.user.id = :userId")
+	public List<EmployeeDocuments> getEmployeeAttachmentByEmployeeId(@Param("userId")Integer userId);
 }

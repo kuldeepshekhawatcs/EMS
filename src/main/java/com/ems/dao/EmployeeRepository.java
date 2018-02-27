@@ -10,7 +10,9 @@ import com.ems.entities.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 
-	@Query("select e from Employee e where e.userName= :username AND e.password=:password")
-	Employee validateCredentials(@Param("username") String username, @Param("password") String password);
+	//@Query("select e from Employee e where e.userName= :username AND e.password=:password")
+	//Employee validateCredentials(@Param("username") String username, @Param("password") String password);
 	
+	@Query("select e from Employee e where e.user.id = :userId")
+	Employee findEmployeeByUserId(@Param("userId") Integer userId);
 }

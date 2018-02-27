@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.ems.dao.LeaveRepository;
 import com.ems.entities.EmployeeLeave;
 import com.ems.service.LeaveService;
+import com.ems.utilities.EmployeeUtility;
 
 @Service
 @Transactional
@@ -36,8 +37,20 @@ public class LeaveServiceImpl implements LeaveService{
 	}
 
 	@Override
-	public EmployeeLeave updateLeaveStatus(EmployeeLeave leave) {
-		return leaveRepository.save(leave);
+	public EmployeeLeave updateLeaveStatus(EmployeeLeave leave) throws Exception {
+		if(leave.getLeaveStatus().equalsIgnoreCase("APPROVED"))
+		{
+			
+			int leaveDays = EmployeeUtility.findWorkingDay(leave.getLeaveFromDate(), leave.getLeaveToDate());
+			int balanceLeaves = leave.getEmployee().getLeaveBalance() - leaveDays;
+			if(balanceLeaves < 1)
+			{
+				throw new Exception("Leave can not be approved !!!");
+			}
+			leave.getEmployee().setLeaveBalance(balanceLeaves);
+		
+		}
+		return leaveRepository.saveAndFlush(leave);
 	}
 
 	

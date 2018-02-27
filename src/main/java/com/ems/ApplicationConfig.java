@@ -9,8 +9,13 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ems.dao.EmployeeTypeRepository;
+import com.ems.dao.UserRepository;
+import com.ems.entities.Employee;
+import com.ems.entities.EmployeeLeave;
+import com.ems.entities.User;
 import com.ems.service.EmployeeService;
-import com.ems.service.EmployeeTypeService;
+import com.ems.service.RoleService;
 
 @SpringBootApplication
 @EnableJpaRepositories("com.ems.dao")
@@ -19,8 +24,18 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
 	@Autowired
 	EmployeeService employeeService;
 	
+	/*
 	@Autowired
-	private EmployeeTypeService employeeTypeService;  
+	private EmployeeTypeService employeeTypeService;  */
+	
+	@Autowired
+	UserRepository userRepo;
+	
+	@Autowired
+	RoleService roleService;
+	
+	@Autowired
+	EmployeeTypeRepository empTypeRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ApplicationConfig.class, args);
@@ -77,6 +92,17 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
 		role.setRolePermission(null);
 	//	type.setRole(role);
 		employeeTypeService.insert(type);*/
+		
+		/*User user = new User();
+		user.setUserName("admin");
+		user.setPassword("admin");
+		userRepo.save(user);*/
+		/*System.out.println("CREATED");
+		Employee emp = new Employee();
+		emp.setRole(roleService.findById(1));
+		emp.setEmployeeType(empTypeRepo.findOne(1));
+		emp.setUser(userRepo.findAll().get(0));
+		employeeService.insert(emp);*/
 	}
 	
 }

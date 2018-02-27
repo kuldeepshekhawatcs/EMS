@@ -14,5 +14,5 @@ public interface LeaveService {
 
 	public List<EmployeeLeave> findAll();
 
-	public EmployeeLeave updateLeaveStatus(EmployeeLeave leave);
+	public EmployeeLeave updateLeaveStatus(EmployeeLeave leave) throws Exception;
 }

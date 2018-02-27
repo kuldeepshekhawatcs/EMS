@@ -7,26 +7,33 @@ myController.controller('LoginController',['$scope','$rootScope','NgTableParams'
 	$scope.profileManagement = false;
 	$scope.submitUserCredentials = function(data)
 	{
-		homeFactory.submitUserCredentials({username : data.userName,password:data.password}).$promise.then(function(data) {
+		homeFactory.submitUserCredentials(data).$promise.then(function(data) {
 			$rootScope.showlogin = false;
 			$rootScope.showHome = true;
-			$rootScope.employeeId = data.employeeId;
-			$scope.setViewAccordingToRole(data.role.roleName);
+			$rootScope.userId = data.id;
+			$scope.setViewAccordingToRole($rootScope.userId);
 		},function error(data) {
 			alert("Invalid Credentials !!")
 		})
 			
 	}
 	
-	$scope.setViewAccordingToRole = function(data)
+	$scope.setViewAccordingToRole = function(userId)
 	{ 
-		if(data == "MANAGER" ||  data == "ADMIN")
-		{
-		$scope.showEmployeeManagement = true;
-		$scope.profileManagement = true;
-		}
-		else
-		$scope.profileManagement = false;
+		homeFactory.findEmployeeByUserId({userId: userId}).$promise.then(function(data) {
+			if(data.role.roleName == "MANAGER" ||  data.role.roleName == "ADMIN")
+			{
+			$scope.showEmployeeManagement = true;
+			$scope.profileManagement = true;
+			$rootScope.employeeId = data.employeeId;
+			}
+			else{
+			$scope.profileManagement = false;
+			}
+			
+		},function error(data) {
+			alert("Invalid Credentials !!")
+		});
 	}
 
 }]);

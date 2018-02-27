@@ -9,20 +9,20 @@
                <div class="form-group">
                     <label for="empID" class="col-sm-3 control-label">First Name</label>
                     <div class="col-sm-6">
-                        <input type="text" id="firstName" placeholder="First Name" class="form-control" ng-model="input.firstName" autofocus >
+                        <input type="text" id="firstName" placeholder="First Name" class="form-control" ng-model="input.user.firstName" autofocus >
                     </div>
                 </div>
                <div class="form-group">
                     <label for="middleName" class="col-sm-3 control-label">Middle Name</label>
                     <div class="col-sm-6">
-                        <input type="text" id="middleName" placeholder="Middle Name" class="form-control" ng-model="input.middleName" autofocus >
+                        <input type="text" id="middleName" placeholder="Middle Name" class="form-control" ng-model="input.user.middleName" autofocus >
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                     </div>
                 </div>
                  <div class="form-group">
                     <label for="lastName" class="col-sm-3 control-label">Last Name</label>
                     <div class="col-sm-6">
-                        <input type="text" id="lastName" placeholder="Last Name" class="form-control" ng-model="input.lastName" autofocus >
+                        <input type="text" id="lastName" placeholder="Last Name" class="form-control" ng-model="input.user.lastName" autofocus >
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                     </div>
                 </div>
@@ -33,12 +33,12 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" name="Gender" value="FEMALE" id="femaleRadio"  ng-model="input.gender">Female
+                                    <input type="radio" name="Gender" value="FEMALE" id="femaleRadio"  ng-model="input.user.gender">Female
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" name="Gender" id="maleRadio" value="MALE" ng-model = "input.gender">Male
+                                    <input type="radio" name="Gender" id="maleRadio" value="MALE" ng-model = "input.user.gender">Male
                                 </label>
                             </div>
                         </div>
@@ -47,19 +47,19 @@
                 <div class="form-group">
                     <label for="PhoneNum" class="col-sm-3 control-label">Phone</label>
                     <div class="col-sm-6">
-                        <input type="text" id="phoneNumber" placeholder="Mobile Number" class="form-control" ng-model="input.phoneNumber">
+                        <input type="text" id="phoneNumber" placeholder="Mobile Number" class="form-control" ng-model="input.user.phoneNumber">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-6">
-                        <input type="email" id="email" placeholder="Email"  class="form-control" ng-model="input.email">
+                        <input type="email" id="email" placeholder="Email"  class="form-control" ng-model="input.user.email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
                     <div class="col-sm-6">
-                        <input type="date" id="birthDate" class="form-control" ng-model="input.dateOfBirth">
+                        <input type="date" id="birthDate" class="form-control" ng-model="input.user.dateOfBirth">
                     </div>
                 </div>
                 <div class="form-group">
@@ -71,21 +71,21 @@
                 <div class="form-group">
                     <label for="address" class="col-sm-3 control-label">Address</label>
                     <div class="col-sm-6">
-                        <input type="text" id="address" placeholder="Address" class="form-control" ng-model="input.address" autofocus >
+                        <input type="text" id="address" placeholder="Address" class="form-control" ng-model="input.user.address" autofocus >
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="address" class="col-sm-3 control-label">Pin Code</label>
                     <div class="col-sm-6">
-                        <input type="text" id="pinCode" placeholder="Pin Code" class="form-control" ng-model="input.pinCode" autofocus >
+                        <input type="text" id="pinCode" placeholder="Pin Code" class="form-control" ng-model="input.user.pinCode" autofocus >
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="country" class="col-sm-3 control-label">Country</label>
                     <div class="col-sm-6">
-                        <select id="country" class="form-control" ng-model="input.country">
+                        <select id="country" class="form-control" ng-model="input.user.country">
                           <!--   <option>Afghanistan</option>
                             <option>Bahamas</option>
                             <option>Cambodia</option>
@@ -102,7 +102,7 @@
                  <div class="form-group">
                     <label for="address" class="col-sm-3 control-label">Bank Account Number</label>
                     <div class="col-sm-6">
-                        <input type="text" id="bankAccount" placeholder="Bank Account Number" class="form-control" ng-model="input.bankAccountNumber" autofocus >
+                        <input type="text" id="bankAccount" placeholder="Bank Account Number" class="form-control" ng-model="input.user.bankAccountNumber" autofocus >
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                  <div class="form-group">
                     <label for="address" class="col-sm-3 control-label">Bank Name</label>
                     <div class="col-sm-6">
-                        <input type="text" id="bankName" placeholder="Bank Name" class="form-control" ng-model="input.bankName" autofocus >
+                        <input type="text" id="bankName" placeholder="Bank Name" class="form-control" ng-model="input.user.bankName" autofocus >
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                  <div class="form-group">
                     <label for="address" class="col-sm-3 control-label">Branch Name</label>
                     <div class="col-sm-6">
-                        <input type="text" id="branchaddress" placeholder="Branch Name" class="form-control" ng-model="input.branchName" autofocus >
+                        <input type="text" id="branchaddress" placeholder="Branch Name" class="form-control" ng-model="input.user.branchName" autofocus >
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                 <div class="form-group">
                     <label for="address" class="col-sm-3 control-label">IFSC Code</label>
                     <div class="col-sm-6">
-                        <input type="text" id="ifsc" placeholder="IFSC Code" class="form-control" ng-model="input.ifscCode" autofocus >
+                        <input type="text" id="ifsc" placeholder="IFSC Code" class="form-control" ng-model="input.user.ifscCode" autofocus >
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                 <div class="form-group">
                     <label for="aadhaarNum" class="col-sm-3 control-label">Aadhaar</label>
                     <div class="col-sm-6">
-                        <input type="text" id="aadhaarNum" placeholder="12 Digit Unique Aadhaar Number" class="form-control" value="1241-1122-2333-1111" autofocus ng-model="input.adharNumber">
+                        <input type="text" id="aadhaarNum" placeholder="12 Digit Unique Aadhaar Number" class="form-control" value="1241-1122-2333-1111" autofocus ng-model="input.user.adharNumber">
                         <a ng-href = "" class="glyphicon glyphicon-trash" ng-show="showRemoveLink('adhar')" ng-click="removeAttachment('adhar');$event.preventDefault()"></a>  
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -149,7 +149,7 @@
                 <div class="form-group">
                     <label for="panLbl" class="col-sm-3 control-label">PAN Number</label>
                     <div class="col-sm-6">
-                        <input type="text" id="panNum" placeholder="PAN Number" class="form-control" value="FEJP4448O" autofocus ng-model="input.panNumber" name="pan">
+                        <input type="text" id="panNum" placeholder="PAN Number" class="form-control" value="FEJP4448O" autofocus ng-model="input.user.panNumber" name="pan">
                         <a ng-href = "" class="glyphicon glyphicon-trash" ng-show="showRemoveLink('pan')"  ng-click="removeAttachment('pan');$event.preventDefault()"></a>
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -164,7 +164,7 @@
                 <div class="form-group">
                     <label for="dlicense" class="col-sm-3 control-label">Driving License</label>
                     <div class="col-sm-6">
-                        <input type="text" id="dlNum" placeholder="Driving License Number" class="form-control" value="MH/14/38947/3847683" autofocus ng-model="input.drivinglicenseNumber">
+                        <input type="text" id="dlNum" placeholder="Driving License Number" class="form-control" value="MH/14/38947/3847683" autofocus ng-model="input.user.drivinglicenseNumber">
                         <a ng-href = "" class="glyphicon glyphicon-trash" ng-show="showRemoveLink('drivinglicense')" ng-click="removeAttachment('drivinglicense');$event.preventDefault()"></a>
                         <!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
                         <div class="fileupload fileupload-new" data-provides="fileupload">

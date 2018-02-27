@@ -44,7 +44,7 @@ myController.controller('LeaveController',['$scope','$rootScope','NgTableParams'
 		.$promise.then(function(data) {
 			if(data != undefined)
 		{
-				alert("created");
+				alert("Successfully Applied !!");
  		}
 	        }, function(data) {
 	          alert("Something went wrong !!");
@@ -55,7 +55,9 @@ myController.controller('LeaveController',['$scope','$rootScope','NgTableParams'
 	{
 		data.leaveStatus = status;
 		homeFactory.updateLeaveStatus(data).$promise.then(function(response) {
-			alert("Submitted Successfully !!")
+			alert("Operation Successfully");
+			$scope.displayRecords();
+			$scope.getAllLeaveStatus();
 		},function error(response) {
 			alert("Something went wrong !!")
 		})

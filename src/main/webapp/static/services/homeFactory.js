@@ -31,7 +31,7 @@ myApp.factory('homeFactory', function($resource,$http){
 			url: '/getEmployeeProfile',
 		},
 		'submitUserCredentials':{
-			method : 'GET',
+			method : 'POST',
 			url: '/submitUserCredentials',
 		},
 		'getLeaveCountByEmployeeId' : {
@@ -50,6 +50,10 @@ myApp.factory('homeFactory', function($resource,$http){
 		'updateLeaveStatus' : {
 			url : '/updateLeaveStatus',
 			method : 'PUT',
+		},
+		'findEmployeeByUserId' : {
+			url : '/findEmployeeByUserId',
+			method : 'GET',			
 		}
 		
 	});

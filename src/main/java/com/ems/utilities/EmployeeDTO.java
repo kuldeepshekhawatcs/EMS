@@ -1,73 +1,14 @@
-package com.ems.entities;
+package com.ems.utilities;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-import com.google.gson.Gson;
+import com.ems.entities.User.Gender;
 
-
-@Entity
-@Table(name="user")
-public class User {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
-	
-	private String userName;
-
-	private String password;
-	
-	private String firstName;
-	
-	private String middleName;
-	
-	private String lastName;
-	
-	private Date dateOfBirth;
-	
-	private String phoneNumber;
-	
-	private String email;
-	
-	private String address;
-	
-	private String pinCode;
-	
-	private String country;
-	
-	private String bankAccountNumber;
-	
-	private String bankName;
-	
-	private String branchName;
-	
-	private String 	ifscCode;
-	
-	private String panNumber; 
-	
-	private String drivinglicenseNumber;
-	
-	public Gender gender;
-	
-	private String adharNumber;
-	
-	public String getAdharNumber() {
-		return adharNumber;
-	}
-
-	public void setAdharNumber(String adharNumber) {
-		this.adharNumber = adharNumber;
-	}
-
-	public enum  Gender {
-		MALE,FEMALE;
-	}
+public class EmployeeDTO {
 
 	public Integer getId() {
 		return id;
@@ -220,11 +161,85 @@ public class User {
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
+
+	public String getAdharNumber() {
+		return adharNumber;
+	}
+
+	public void setAdharNumber(String adharNumber) {
+		this.adharNumber = adharNumber;
+	}
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	
-	public static void main(String[] args) {
-		User u = new User();
-		Gson gson = new Gson();
-		System.out.println(gson.toJson(u));
+	private String userName;
+
+	private String password;
+	
+	private String firstName;
+	
+	private String middleName;
+	
+	private String lastName;
+	
+	private Date dateOfBirth;
+	
+	private String phoneNumber;
+	
+	private String email;
+	
+	private String address;
+	
+	private String pinCode;
+	
+	private String country;
+	
+	private String bankAccountNumber;
+	
+	private String bankName;
+	
+	private String branchName;
+	
+	private String 	ifscCode;
+	
+	private String panNumber; 
+	
+	private String drivinglicenseNumber;
+	
+	public Gender gender;
+	
+	private String adharNumber;
+	
+	private Date dateOfJoining;
+	
+	private String role;
+	
+	private String employeeType;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getEmployeeType() {
+		return employeeType;
+	}
+
+	public void setEmployeeType(String employeeType) {
+		this.employeeType = employeeType;
+	}
+
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
 	}
 	
 }

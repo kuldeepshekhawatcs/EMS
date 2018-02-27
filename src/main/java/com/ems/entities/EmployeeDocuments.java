@@ -18,15 +18,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class EmployeeDocuments implements Serializable{
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer documentId;
 	
 	@JsonIgnore
 	@ManyToOne@NotNull
-	@JoinColumn(name = "employee_id")
+	@JoinColumn(name = "user_id")
 	@Basic(fetch = FetchType.LAZY)
-	private Employee employee;
+	private User user;
 	
 	private String documentDescription;
 	
@@ -41,8 +49,6 @@ public class EmployeeDocuments implements Serializable{
 		this.doc = doc;
 	}
 
-	//private byte[] documentFile;
-
 	public Integer getDocumentId() {
 		return documentId;
 	}
@@ -51,13 +57,6 @@ public class EmployeeDocuments implements Serializable{
 		this.documentId = documentId;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 
 	public String getDocumentDescription() {
 		return documentDescription;
@@ -67,13 +66,7 @@ public class EmployeeDocuments implements Serializable{
 		this.documentDescription = documentDescription;
 	}
 
-/*	public byte[] getDocumentFile() {
-		return documentFile;
-	}
 
-	public void setDocumentFile(byte[] documentFile) {
-		this.documentFile = documentFile;
-	}*/
 	
 	
 }

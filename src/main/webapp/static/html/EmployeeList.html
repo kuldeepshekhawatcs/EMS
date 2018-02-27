@@ -32,30 +32,30 @@
 										 <th>Action</th></tr>
     </thead>
     <tbody>
-      <tr ng-repeat="user in $data | filter: searchText">
-        <td>{{user.employeeId}}</td>
+      <tr ng-repeat="emp in $data | filter: searchText">
+        <td>{{emp.employeeId}}</td>
         <td>
-          {{user.firstName}} {{user.middleName}} {{user.lastName}}
+          {{emp.user.firstName}} {{emp.user.middleName}} {{emp.user.lastName}}
         </td>
-        <td>{{user.dateOfJoining}}</td>
-        <td>{{user.phoneNumber}} </td>
-        <td>{{user.dateOfBirth}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.address}}</td>
-        <td>{{user.country}}</td>
-        <td>{{user.employeeType.employeeTypeDescription}}</td>
-        <td>{{user.bankAccountNumber}}</td>
-        <td>{{user.bankName}}</td>
-        <td>{{user.branchName}}</td>
-        <td>{{user.ifscCode}}</td>
-        <td>{{user.panNumber}}</td>
-        <td>{{user.drivinglicenseNumber}}</td>
-        <td>{{user.adharNumber}}</td>
+        <td>{{emp.dateOfJoining}}</td>
+        <td>{{emp.user.phoneNumber}} </td>
+        <td>{{emp.user.dateOfBirth}}</td>
+        <td>{{emp.user.email}}</td>
+        <td>{{emp.user.address}}</td>
+        <td>{{emp.user.country}}</td>
+        <td>{{emp.employeeType.employeeTypeDescription}}</td>
+        <td>{{emp.user.bankAccountNumber}}</td>
+        <td>{{emp.user.bankName}}</td>
+        <td>{{emp.user.branchName}}</td>
+        <td>{{emp.user.ifscCode}}</td>
+        <td>{{emp.user.panNumber}}</td>
+        <td>{{emp.user.drivinglicenseNumber}}</td>
+        <td>{{emp.user.adharNumber}}</td>
          <td></td>
           <td></td>
         
         <td>
-		<span><a href="" class="glyphicon glyphicon-edit" ng-click="editUser(user);$event.preventDefault()" data-popout="true"></a></span> 	
+		<span><a href="" class="glyphicon glyphicon-edit" ng-click="editUser(emp);$event.preventDefault()" data-popout="true"></a></span> 	
         <span><a href="" class="glyphicon glyphicon-trash" ng-click="deleteUser($event.target.href);$event.preventDefault()" data-popout="true"></a></span>  
     	
       </td>

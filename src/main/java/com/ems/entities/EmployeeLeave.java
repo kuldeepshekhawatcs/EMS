@@ -2,6 +2,7 @@ package com.ems.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class EmployeeLeave {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int leaveId;
 
-	@ManyToOne@NotNull
+	@ManyToOne(cascade = CascadeType.ALL)@NotNull
 	@JoinColumn(name="employee_id")
 	private Employee employee;
 	
