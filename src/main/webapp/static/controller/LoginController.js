@@ -1,26 +1,12 @@
-myController.controller('LoginController',['$scope','$rootScope','NgTableParams','homeFactory','$location','$window',function($scope,$rootScope,NgTableParams,homeFactory,$location,$window){
-	
+myController.controller('LoginController',['$scope','$rootScope','NgTableParams','homeFactory','$location','$window','$cookies',function($scope,$rootScope,NgTableParams,homeFactory,$location,$window,$cookies){
 	$scope.user = {};
-	$rootScope.showlogin = true;
-	$scope.checkRole = false;
 	$scope.showEmployeeManagement = false;
 	$scope.profileManagement = false;
-	$scope.submitUserCredentials = function(data)
-	{
-		homeFactory.submitUserCredentials(data).$promise.then(function(data) {
-			$rootScope.showlogin = false;
-			$rootScope.showHome = true;
-			$rootScope.userId = data.id;
-			$scope.setViewAccordingToRole($rootScope.userId);
-		},function error(data) {
-			alert("Invalid Credentials !!")
-		})
-			
-	}
 	
 	$scope.setViewAccordingToRole = function(userId)
 	{ 
-		homeFactory.findEmployeeByUserId({userId: userId}).$promise.then(function(data) {
+		var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+		homeFactory.findEmployeeByUserId({userId: cookieValue}).$promise.then(function(data) {
 			if(data.role.roleName == "MANAGER" ||  data.role.roleName == "ADMIN")
 			{
 			$scope.showEmployeeManagement = true;
@@ -36,4 +22,5 @@ myController.controller('LoginController',['$scope','$rootScope','NgTableParams'
 		});
 	}
 
+	$scope.setViewAccordingToRole();
 }]);

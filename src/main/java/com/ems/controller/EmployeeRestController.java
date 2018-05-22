@@ -12,6 +12,7 @@ import org.apache.commons.beanutils.BeanPropertyValueEqualsPredicate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -140,7 +141,8 @@ public class EmployeeRestController {
 		return employeeService.findEmployeeById(employeeId);
 	}
 
-	@RequestMapping(value = "/submitUserCredentials", method = RequestMethod.POST)
+	@RequestMapping(value = "/submitUserCredentials", method = RequestMethod.POST, 
+			consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public User submitUserCredentials(@RequestBody User user) throws Exception{
 		try{

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute','myController','myServices','ngResource','ngTable']);
+var myApp = angular.module('myApp', ['ngRoute','myController','myServices','ngResource','ngTable','ngCookies']);
 
 var myController = angular.module('myController',[]);
 

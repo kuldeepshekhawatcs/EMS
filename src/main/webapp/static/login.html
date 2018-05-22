@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp" lang="en">
+<html lang="en">
 
 <head>
 
@@ -10,19 +10,19 @@
     <meta name="author" content="">
     
     
-   <script type="text/javascript" src="generic/angular.min.js"></script>
+   <!-- <script type="text/javascript" src="generic/angular.min.js"></script>
 	<script type="text/javascript" src="generic/angular-route.min.js"></script>
 	<script type="text/javascript" src="generic/angular-resource.min.js"></script>
 	<script type="text/javascript" src="generic/ng-file-upload-shim.min.js"></script>
 	<script type="text/javascript" src="generic/ng-file-upload.min.js"></script>
 	<script type="text/javascript" src="generic/ngDialog.min.js"></script>
-	<script type="text/javascript" src="generic/ng-table.js"></script>
+	<script type="text/javascript" src="generic/ng-table.js"></script> -->
 	
 	
-	<script type="text/javascript" src="js/angularjs/app.js"></script>
+	<!-- <script type="text/javascript" src="js/angularjs/app.js"></script>
 	<script src="services/homeFactory.js"></script>
 	<script src="model/fileUploadService.js"></script>
-	<script src="controller/LoginController.js"></script>	
+	<script src="controller/LoginController.js"></script>	 -->
 	
 	
     <title>Please keep you name here</title>
@@ -49,15 +49,15 @@
 
 <body>
 
-    <div class="login" ng-controller="LoginController">
+    <div class="login">
   <div class="login-triangle"></div>
   
   <h2 class="login-header">Log in</h2>
 
-  <form class="login-container" >
-    <p><input type="text" placeholder="username" ng-model="user.userName"></p>
-    <p><input type="password" placeholder="Password" ng-model="user.password"></p>
-    <p><input type="submit" value="Log in" ng-click="submitUserCredentials(user)"></p>
+  <form class="login-container" action = "javascript:submitCredentials()">
+    <p><input type="text" placeholder="username" id="username"></p>
+    <p><input type="password" placeholder="Password" id="password"></p>
+    <p><input type="submit" value="Log in"></p>
   </form>
 </div>
 
@@ -83,5 +83,34 @@
     <script src="js/sb-admin-2.js"></script>
 
 </body>
+
+<script>
+
+
+function submitCredentials(){
+
+	var username = $('#username').val();
+	var password = $('#password').val();
+	var object = "{\"userName\":\""+username+"\",\"password\":\""+password+"\"}"
+	 $(document).ready(function(){
+	        $.ajax({url: "/submitUserCredentials",
+	        	 type: "POST",
+	        	data :object,
+	        	 dataType: 'json',
+	        	 contentType: 'application/json',
+	        	    mimeType: 'application/json',
+	        	success: function(result){
+	        		alert(result.id);
+	        		document.cookie = "userId="+result.id+"";
+	        		location.href = "./index.html";
+	        }
+	        	
+	            
+	    });
+	});     
+}
+
+
+</script>
 
 </html>
