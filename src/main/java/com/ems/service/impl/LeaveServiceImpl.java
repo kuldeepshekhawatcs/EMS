@@ -40,15 +40,8 @@ public class LeaveServiceImpl implements LeaveService{
 	public EmployeeLeave updateLeaveStatus(EmployeeLeave leave) throws Exception {
 		if(leave.getLeaveStatus().equalsIgnoreCase("APPROVED"))
 		{
-			
-			int leaveDays = EmployeeUtility.findWorkingDay(leave.getLeaveFromDate(), leave.getLeaveToDate());
-			int balanceLeaves = leave.getEmployee().getLeaveBalance() - leaveDays;
-			if(balanceLeaves < 1)
-			{
-				throw new Exception("Leave can not be approved !!!");
-			}
+			int balanceLeaves = leave.getEmployee().getLeaveBalance() - leave.getTotalWorkingDaysOfLeave();
 			leave.getEmployee().setLeaveBalance(balanceLeaves);
-		
 		}
 		return leaveRepository.saveAndFlush(leave);
 	}

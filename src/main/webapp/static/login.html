@@ -93,14 +93,14 @@ function submitCredentials(){
 	var password = $('#password').val();
 	var object = "{\"userName\":\""+username+"\",\"password\":\""+password+"\"}"
 	 $(document).ready(function(){
-	        $.ajax({url: "/submitUserCredentials",
+	        $.ajax({
+	        	url: '/EMS/submitUserCredentials',
 	        	 type: "POST",
 	        	data :object,
 	        	 dataType: 'json',
 	        	 contentType: 'application/json',
 	        	    mimeType: 'application/json',
 	        	success: function(result){
-	        		alert(result.id);
 	        		document.cookie = "userId="+result.id+"";
 	        		location.href = "./index.html";
 	        }

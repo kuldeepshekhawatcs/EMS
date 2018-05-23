@@ -12,6 +12,7 @@ myController.controller('LoginController',['$scope','$rootScope','NgTableParams'
 			$scope.showEmployeeManagement = true;
 			$scope.profileManagement = true;
 			$rootScope.employeeId = data.employeeId;
+			$rootScope.userId = data.user.id;
 			}
 			else{
 			$scope.profileManagement = false;

@@ -19,6 +19,7 @@ import com.ems.entities.EmployeeLeave;
 import com.ems.service.EmployeeService;
 import com.ems.service.LeaveService;
 import com.ems.utilities.EmployeeListDTO;
+import com.ems.utilities.EmployeeUtility;
 import com.ems.utilities.WrapperDTO;
 
 @RestController
@@ -44,7 +45,8 @@ public class LeaveRestController {
 	@ResponseBody
 	public EmployeeLeave applyLeave(@RequestBody EmployeeLeave leave) throws Exception{
 		leave.setLeaveStatus("PENDING");
-		leave.setTotalWorkingDaysOfLeave(5);
+		int leaveDays = EmployeeUtility.findWorkingDay(leave.getLeaveFromDate(), leave.getLeaveToDate());
+		leave.setTotalWorkingDaysOfLeave(leaveDays);
 		Employee emp = employeeService.findEmployeeById(leave.getEmployee().getEmployeeId());
 		leave.setEmployee(emp);
 		return leaveService.applyLeave(leave);		

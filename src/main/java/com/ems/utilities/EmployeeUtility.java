@@ -35,8 +35,8 @@ public class EmployeeUtility {
 		employee.setBankName(json.getBankName());
 		employee.setBranchName(json.getBranchName());
 		employee.setCountry(json.getCountry());
-		employee.setDateOfBirth(json.getDateOfBirth());
-		emp.setDateOfJoining(json.getDateOfJoining());
+		employee.setDateOfBirth(formattor.parse(json.getDateOfBirth()));
+		emp.setDateOfJoining(formattor.parse(json.getDateOfJoining()));
 		employee.setDrivinglicenseNumber(json.getDrivinglicenseNumber());
 		employee.setEmail(json.getEmail());
 		employee.setFirstName(json.getFirstName());
@@ -46,9 +46,9 @@ public class EmployeeUtility {
 		employee.setPanNumber(json.getPanNumber());
 		employee.setPhoneNumber(json.getPhoneNumber());
 		employee.setPinCode(json.getPinCode());
-		/*if(json.getGender().equalsIgnoreCase("MALE"))	employee.setGender(Gender.MALE);
-		else  employee.setGender(Gender.FEMALE);*/
-		employee.setGender(json.getGender());
+		if(json.getGender().equalsIgnoreCase("MALE"))
+			employee.setGender(Gender.MALE);
+		else  employee.setGender(Gender.FEMALE);
 		emp.setUser(employee);
 		return emp;
 	}

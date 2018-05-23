@@ -69,9 +69,9 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 				formData.append("pvd", $scope.pvd);
 			}
 		
-		fileUploadService.uploadFilesWithData('/updateemployee', formData).success(function(response){
+		fileUploadService.uploadFilesWithData('/EMS/updateemployee', formData).success(function(response){
 				if(response=="success"){
-					alert("Registerd Succesfully");
+					alert("Succesfully");
 					$location.path('/employeelist');
 				}
 			    	}).error(function(result){

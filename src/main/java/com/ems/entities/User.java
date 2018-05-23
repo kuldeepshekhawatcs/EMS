@@ -221,10 +221,4 @@ public class User {
 		this.gender = gender;
 	}
 	
-	public static void main(String[] args) {
-		User u = new User();
-		Gson gson = new Gson();
-		System.out.println(gson.toJson(u));
-	}
-	
 }

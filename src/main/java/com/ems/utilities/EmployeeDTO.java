@@ -58,11 +58,11 @@ public class EmployeeDTO {
 		this.lastName = lastName;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -154,11 +154,11 @@ public class EmployeeDTO {
 		this.drivinglicenseNumber = drivinglicenseNumber;
 	}
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -184,7 +184,7 @@ public class EmployeeDTO {
 	
 	private String lastName;
 	
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	
 	private String phoneNumber;
 	
@@ -208,11 +208,11 @@ public class EmployeeDTO {
 	
 	private String drivinglicenseNumber;
 	
-	public Gender gender;
+	public String gender;
 	
 	private String adharNumber;
 	
-	private Date dateOfJoining;
+	private String dateOfJoining;
 	
 	private String role;
 	
@@ -234,11 +234,11 @@ public class EmployeeDTO {
 		this.employeeType = employeeType;
 	}
 
-	public Date getDateOfJoining() {
+	public String getDateOfJoining() {
 		return dateOfJoining;
 	}
 
-	public void setDateOfJoining(Date dateOfJoining) {
+	public void setDateOfJoining(String dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
 	

@@ -3,58 +3,62 @@ myApp.factory('homeFactory', function($resource,$http){
 	return $resource(baseURL, {}, {
 		'getEmpList' : {
 			method : 'GET',
-			url: '/getallemployee'
+			url:  '/EMS/getallemployee'
 		},
 		'query' : {
 			method : 'GET',
-			url: baseURL+'/search'
+			url: '/EMS/search'
 		},
 		'deleteCandidate' : {
 			method : 'GET',
-			url: baseURL+'/delete'
+			url: '/EMS/delete'
 		},
 		'getHolidayList':{
 			method : 'GET',
-			url: '/getHolidayList'
+			url: '/EMS/getHolidayList'
 		},
 		'getEmployeeAttachmentByEmployeeId':{
 			method : 'GET',
-			url: '/getEmployeeAttachmentByEmployeeId',
+			url: '/EMS/getEmployeeAttachmentByEmployeeId',
 			isArray : true,
 		},
 		'deleteAttachmentById':{
 			method : 'DELETE',
-			url: '/deleteAttachmentById',
+			url:  '/EMS/deleteAttachmentById',
 		},
 		'getEmployeeProfile':{
 			method : 'GET',
-			url: '/getEmployeeProfile',
+			url: '/EMS/getEmployeeProfile',
 		},
 		'submitUserCredentials':{
 			method : 'POST',
-			url: '/submitUserCredentials',
+			url:  '/EMS/submitUserCredentials',
 		},
 		'getLeaveCountByEmployeeId' : {
 			method : 'GET',
-			url: '/getLeaveCountByEmployeeId',
+			url:  '/EMS/getLeaveCountByEmployeeId',
 		},
 		'applyLeave' : {
-			url : '/applyLeave',
+			url : '/EMS/applyLeave',
 			method : 'POST'
 		},
 		'getallLeaveRequested' : {
-			url : '/getallLeaveRequested',
+			url : '/EMS/getallLeaveRequested',
 			method : 'GET',
 			isArray : true,
 		},
 		'updateLeaveStatus' : {
-			url : '/updateLeaveStatus',
+			url : '/EMS/updateLeaveStatus',
 			method : 'PUT',
 		},
 		'findEmployeeByUserId' : {
-			url : '/findEmployeeByUserId',
+			url : '/EMS/findEmployeeByUserId',
 			method : 'GET',			
-		}
+		},
+		'getJobList' : {
+			method : 'GET',
+			url:  '/EMS/getAllJobs'
+		},
 		
 	});
 });

@@ -68,7 +68,7 @@ myController.controller('EmployeeController',['$scope','$rootScope','fileUploadS
 				formData.append("pvd", $scope.pvd);
 			}
 		
-		fileUploadService.uploadFilesWithData('/addemployee', formData).success(function(response){
+		fileUploadService.uploadFilesWithData('/EMS/addemployee', formData).success(function(response){
 				if(response=="success"){
 					alert("Registerd Succesfully");
 					/*$location.path('/home');*/
