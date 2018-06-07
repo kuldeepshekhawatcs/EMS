@@ -1,10 +1,11 @@
 package com.ems.entities;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -36,6 +37,8 @@ public class Job {
 	private String fuelType;
 	private String serviceType;
 	private String complaint;
+	@Transient
+	private List<String> carNameList;
 	
 	public String getOdoMeter() {
 		return odoMeter;

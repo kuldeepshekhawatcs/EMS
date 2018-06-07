@@ -47,6 +47,9 @@ myApp.config(function($routeProvider) {
      .when("/showAllJob", {
         templateUrl : "html/Jobs.html"
     })
+    .when("/addJob", {
+        templateUrl : "html/AddJob.html"
+    })
     
 });
 

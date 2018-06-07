@@ -48,6 +48,8 @@
 	<script src="controller/LoginController.js"></script>	
 	<script src="controller/JobController.js"></script>	
 	
+	 
+	
 <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
@@ -68,8 +70,12 @@
     <!-- File Upload JavaScript -->
 	<script src="js/fileUpload.js"></script>
 	<link rel="stylesheet" href="dist/css/login.css">
-</head>
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
+
+</head>
 	<div id="wrapper"> 
 
         <!-- Navigation -->
@@ -167,13 +173,8 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
-         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                </div> 
-             <div ng-view>        
-            
+          <div id="page-wrapper"  style="padding:0 4px">
+             <div  class="container" ng-view>        
              
              </div>
             </div>
@@ -182,10 +183,8 @@
             </div>
             <!-- /.row -->
           
-        </div>
         <!-- /#page-wrapper -->
 
-    </div>
     <!-- /#wrapper -->
 	
 

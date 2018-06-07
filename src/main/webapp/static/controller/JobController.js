@@ -24,4 +24,14 @@ myController.controller('JobController',['$scope','$rootScope','fileUploadServic
 	$scope.loadData();
 	
 	
+	$scope.datePicketConfiguration = function() {
+		  var date_input=$('input[name="date"]'); 
+		  var options={
+		    format: 'dd/mm/yyyy',
+		    todayHighlight: true,
+		    autoclose: true,
+		  };
+		  date_input.datepicker(options);
+	}
+	
 }]);

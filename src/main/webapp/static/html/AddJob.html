@@ -1,1 +1,243 @@
-Need to implements under construction
+<div class="row" ng-controller="JobController">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span>Add New Job Cart</span>
+		</div>
+	</div>
+	<div class="col-lg-10">
+		<form role="form">
+			<div class="form-group">
+				<div class="col-sm-4">
+					<label for="name">Registration Number</label> <input
+						class="form-control" type="text" value="MP-09-CG-9762"
+						ng-model="registrationNo">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4">
+					<label for="email">Odometer</label> <input type="text"
+						class="form-control" id="odometer" placeholder="in km"
+						ng-model="odoMeter">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4">
+					<label for="pwd">Average KM/day</label> <input type="text"
+						class="form-control" id="avgkm" ng-model="avgKmPerDay">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4">
+					<label for="pwd">VIN No.</label> <input type="text"
+						class="form-control" ng-model="vinNo">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4">
+					<label for="pwd">Engine No.</label> <input type="text"
+						class="form-control" ng-model="engineNo">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4">
+					<label for="pwd">Find Car</label> 
+					<input class="form-control" list="browsers" name="browser" ng-model="vehicleName">
+					<datalist id="browsers">
+						<option value="Internet Explorer">
+						<option value="Firefox">
+						<option value="Chrome">
+						<option value="Opera">
+						<option value="Safari">
+					</datalist>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-4">
+					<label for="pwd">Make</label><input class="form-control"
+						list="browsers" name="browser" ng-model="make">
+					<datalist id="browsers">
+						<option value="Internet Explorer">
+						<option value="Firefox">
+						<option value="Chrome">
+						<option value="Opera">
+						<option value="Safari">
+					</datalist>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-4">
+						<label for="pwd">Model</label> <input class="form-control"
+							list="browsers" name="browser" ng-model="model">
+						<datalist id="browsers">
+							<option value="Internet Explorer">
+							<option value="Firefox">
+							<option value="Chrome">
+							<option value="Opera">
+							<option value="Safari">
+						</datalist>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Year</label> <input type="text"
+								class="form-control" ng-model="year">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Variant</label><input class="form-control"
+								list="browsers" name="browser"  ng-model="variant">
+							<datalist id="browsers">
+								<option value="Internet Explorer">
+								<option value="Firefox">
+								<option value="Chrome">
+								<option value="Opera">
+								<option value="Safari">
+							</datalist>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Vehicle Color</label> <input type="text"
+								class="form-control" ng-model="vehicleColor">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Fuel Type</label> <input type="text"
+								class="form-control" ng-model="fuelType">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Service Type</label> <input type="text"
+								class="form-control" ng-model="serviceType">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Select Advisor</label> <input type="text"
+								class="form-control" ng-model="advisor">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Customer Complaint</label><input
+								class="form-control" list="browsers" name="browser">
+							<datalist id="browsers" ng-model="complaint">
+								<option value="Internet Explorer">
+								<option value="Firefox">
+								<option value="Chrome">
+								<option value="Opera">
+								<option value="Safari">
+							</datalist>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Coorporate Fleet / Customer</label><input
+								class="form-control" list="browsers" name="browser" ng-model="insuraceName">
+							<datalist id="browsers">
+								<option value="Internet Explorer">
+								<option value="Firefox">
+								<option value="Chrome">
+								<option value="Opera">
+								<option value="Safari">
+							</datalist>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Customer Name</label> <input type="text"
+								class="form-control" ng-model="customerName">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Mobile Number</label> <input type="text"
+								class="form-control" ng-model="mobileNumber">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Alternate Mobile</label> <input type="text"
+								class="form-control" ng-model="customerName">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Email</label> <input type="text"
+								class="form-control" ng-model="email">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label class="control-label" for="date">Delievery Date</label> <input
+								class="form-control" id="date" name="date"
+								placeholder="DD/MM/YYY" type="text" ng-model="delieveryDate"
+								ng-init="datePicketConfiguration()" />
+						</div>
+					</div>
+					<label style="margin-top: 2%; margin-left: 2%;">Advance
+						Payment:</label>
+
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label for="pwd">Payment By</label><input class="form-control"
+								list="browsers" name="browser">
+							<datalist id="browsers">
+								<option value="Internet Explorer">
+								<option value="Firefox">
+								<option value="Chrome">
+								<option value="Opera">
+								<option value="Safari">
+							</datalist>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<label class="control-label" for="date">Bank Name</label> <input
+									class="form-control" id="date" name="date" type="text" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<label class="control-label" for="date">Cheque No.</label> <input
+									class="form-control" id="date" name="date" type="text" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<label class="control-label" for="date">Amount</label> <input
+									class="form-control" id="date" name="date" type="text" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<label class="control-label" for="date">Date</label> <input
+									class="form-control" id="date" name="date"
+									placeholder="DD/MM/YYY" type="text"
+									ng-init="datePicketConfiguration()"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<label class="control-label" for="date">Comments</label> <input
+									class="form-control" id="date" name="date"
+									 type="text"/>
+							</div>
+						</div>
+						
+						<div class="form-group" style="text-align: center">
+			 					<button type="button" class="btn btn-success btn-md" style="margin-top:4%">Create Job</button>
+			 					<button type="button" class="btn btn-warning" style="margin-top:4%">Reset Job</button>
+			 					<button type="button" class="btn btn-danger" style="margin-top:4%">Cancel Job</button>
+						</div>
+				</form>
+				
+	</div>
+</div>
