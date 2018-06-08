@@ -59,6 +59,10 @@ myApp.factory('homeFactory', function($resource,$http){
 			method : 'GET',
 			url:  '/EMS/getAllJobs'
 		},
+		'loadNewJob' : {
+			method : 'GET',
+			url:  '/EMS/load-new-job'
+		},
 		
 	});
 });

@@ -1,4 +1,5 @@
-<div class="row" ng-controller="JobController">
+<div class="row" ng-controller="JobController" style="width:96%">
+ <div class="panel-group">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<span>Add New Job Cart</span>
@@ -10,38 +11,38 @@
 				<div class="col-sm-4">
 					<label for="name">Registration Number</label> <input
 						class="form-control" type="text" value="MP-09-CG-9762"
-						ng-model="registrationNo">
+						ng-model="input.registrationNo">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="email">Odometer</label> <input type="text"
 						class="form-control" id="odometer" placeholder="in km"
-						ng-model="odoMeter">
+						ng-model="input.odoMeter">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="pwd">Average KM/day</label> <input type="text"
-						class="form-control" id="avgkm" ng-model="avgKmPerDay">
+						class="form-control" id="avgkm" ng-model="input.avgKmPerDay">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="pwd">VIN No.</label> <input type="text"
-						class="form-control" ng-model="vinNo">
+						class="form-control" ng-model="input.vinNo">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="pwd">Engine No.</label> <input type="text"
-						class="form-control" ng-model="engineNo">
+						class="form-control" ng-model="input.engineNo">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="pwd">Find Car</label> 
-					<input class="form-control" list="browsers" name="browser" ng-model="vehicleName">
+					<input class="form-control" list="browsers" name="browser" ng-model="input.vehicleName">
 					<datalist id="browsers">
 						<option value="Internet Explorer">
 						<option value="Firefox">
@@ -54,7 +55,7 @@
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="pwd">Make</label><input class="form-control"
-						list="browsers" name="browser" ng-model="make">
+						list="browsers" name="browser" ng-model="input.make">
 					<datalist id="browsers">
 						<option value="Internet Explorer">
 						<option value="Firefox">
@@ -66,7 +67,7 @@
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label for="pwd">Model</label> <input class="form-control"
-							list="browsers" name="browser" ng-model="model">
+							list="browsers" name="browser" ng-model="input.model">
 						<datalist id="browsers">
 							<option value="Internet Explorer">
 							<option value="Firefox">
@@ -78,13 +79,13 @@
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Year</label> <input type="text"
-								class="form-control" ng-model="year">
+								class="form-control" ng-model="input.year">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Variant</label><input class="form-control"
-								list="browsers" name="browser"  ng-model="variant">
+								list="browsers" name="browser"  ng-model="input.variant">
 							<datalist id="browsers">
 								<option value="Internet Explorer">
 								<option value="Firefox">
@@ -97,26 +98,26 @@
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Vehicle Color</label> <input type="text"
-								class="form-control" ng-model="vehicleColor">
+								class="form-control" ng-model="input.vehicleColor">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Fuel Type</label> <input type="text"
-								class="form-control" ng-model="fuelType">
+								class="form-control" ng-model="input.fuelType">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Service Type</label> <input type="text"
-								class="form-control" ng-model="serviceType">
+								class="form-control" ng-model="input.serviceType">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Select Advisor</label> <input type="text"
-								class="form-control" ng-model="advisor">
+								class="form-control" ng-model="input.advisor">
 						</div>
 					</div>
 
@@ -124,7 +125,7 @@
 						<div class="col-sm-4">
 							<label for="pwd">Customer Complaint</label><input
 								class="form-control" list="browsers" name="browser">
-							<datalist id="browsers" ng-model="complaint">
+							<datalist id="browsers" ng-model="input.complaint">
 								<option value="Internet Explorer">
 								<option value="Firefox">
 								<option value="Chrome">
@@ -137,7 +138,7 @@
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Coorporate Fleet / Customer</label><input
-								class="form-control" list="browsers" name="browser" ng-model="insuraceName">
+								class="form-control" list="browsers" name="browser" ng-model="input.insuraceName">
 							<datalist id="browsers">
 								<option value="Internet Explorer">
 								<option value="Firefox">
@@ -152,34 +153,34 @@
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Customer Name</label> <input type="text"
-								class="form-control" ng-model="customerName">
+								class="form-control" ng-model="input.customerName">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Mobile Number</label> <input type="text"
-								class="form-control" ng-model="mobileNumber">
+								class="form-control" ng-model="input.mobileNumber">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Alternate Mobile</label> <input type="text"
-								class="form-control" ng-model="customerName">
+								class="form-control" ng-model="input.customerName">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Email</label> <input type="text"
-								class="form-control" ng-model="email">
+								class="form-control" ng-model="input.email">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label class="control-label" for="date">Delievery Date</label> <input
 								class="form-control" id="date" name="date"
-								placeholder="DD/MM/YYY" type="text" ng-model="delieveryDate"
+								placeholder="DD/MM/YYY" type="text" ng-model="input.delieveryDate"
 								ng-init="datePicketConfiguration()" />
 						</div>
 					</div>
@@ -189,7 +190,7 @@
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Payment By</label><input class="form-control"
-								list="browsers" name="browser">
+								list="browsers" name="browser" ng-model="input.customer.paymentMode">
 							<datalist id="browsers">
 								<option value="Internet Explorer">
 								<option value="Firefox">
@@ -201,43 +202,44 @@
 						<div class="form-group">
 							<div class="col-sm-4">
 								<label class="control-label" for="date">Bank Name</label> <input
-									class="form-control" id="date" name="date" type="text" />
+									class="form-control" id="date" name="date" type="text" ng-model="input.customer.bankName"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-4">
 								<label class="control-label" for="date">Cheque No.</label> <input
-									class="form-control" id="date" name="date" type="text" />
+									class="form-control" id="date" name="date" type="text" ng-model="input.customer.chequeNo"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-4">
 								<label class="control-label" for="date">Amount</label> <input
-									class="form-control" id="date" name="date" type="text" />
+									class="form-control" id="date" name="date" type="text" ng-model="input.customer.amount"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-4">
 								<label class="control-label" for="date">Date</label> <input
 									class="form-control" id="date" name="date"
-									placeholder="DD/MM/YYY" type="text"
+									placeholder="DD/MM/YYY" type="text" ng-model="input.customer.dateOfPayment"
 									ng-init="datePicketConfiguration()"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-4">
 								<label class="control-label" for="date">Comments</label> <input
-									class="form-control" id="date" name="date"
+									class="form-control" id="date" name="date" ng-model="input.comments"
 									 type="text"/>
 							</div>
 						</div>
 						
 						<div class="form-group" style="text-align: center">
-			 					<button type="button" class="btn btn-success btn-md" style="margin-top:4%">Create Job</button>
-			 					<button type="button" class="btn btn-warning" style="margin-top:4%">Reset Job</button>
-			 					<button type="button" class="btn btn-danger" style="margin-top:4%">Cancel Job</button>
+			 					<button type="button" class="btn btn-success btn-md" style="margin-top:4%" ng-click="createJob(input)">Estimate Now</button>
+			 					<button type="button" class="btn btn-warning" style="margin-top:4%" ng-click="estimateLater()">Estimate Later</button>
+			 					<button type="button" class="btn btn-danger" style="margin-top:4%" ng-click="cancelJob()">Cancel Job</button>
 						</div>
 				</form>
 				
 	</div>
+</div>
 </div>

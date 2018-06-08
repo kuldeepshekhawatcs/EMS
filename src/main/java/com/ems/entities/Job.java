@@ -1,11 +1,12 @@
 package com.ems.entities;
 
-import java.util.List;
-
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -23,6 +24,7 @@ public class Job {
 	private java.util.Date delieveryDate;
 	private String mobileNumber;
 	private String partStatus;
+	@NotNull
 	private String customerName;
 	private String insuranceName;
 	private String odoMeter;
@@ -37,9 +39,18 @@ public class Job {
 	private String fuelType;
 	private String serviceType;
 	private String complaint;
-	@Transient
-	private List<String> carNameList;
+	@ManyToOne
+	@JoinColumn(name = "cust_id")
+	@Basic(fetch = FetchType.LAZY)
+	private Customer customer;
 	
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 	public String getOdoMeter() {
 		return odoMeter;
 	}

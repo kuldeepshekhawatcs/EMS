@@ -41,12 +41,12 @@ myController.controller('LeaveController',['$scope','$rootScope','NgTableParams'
 	$scope.applyLeave = function(data) {
 		$scope.leave.employee.employeeId = $rootScope.employeeId;
 		homeFactory.applyLeave(data)
-		.$promise.then(function(data) {
-			if(data != undefined)
+		.$promise.then(function(success) {
+			if(success != undefined)
 		{
 				alert("Successfully Applied !!");
  		}
-	        }, function(data) {
+	        }, function(error) {
 	          alert("Something went wrong !!");
 	        });
 	}

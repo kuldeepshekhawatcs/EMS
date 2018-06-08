@@ -31,4 +31,9 @@ public class JobRestController {
 		return jobListDTO;
 	}
 	
+	@RequestMapping(value = "/load-new-job", method = RequestMethod.GET)
+	@ResponseBody
+	public Job loadNewJob() throws Exception{
+		return new Job();
+	}
 }
