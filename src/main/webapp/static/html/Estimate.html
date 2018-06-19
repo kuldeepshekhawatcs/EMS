@@ -1,4 +1,5 @@
-<div class="row" style="width:96%">
+
+<div class="row" style="width:85%" ng-controller = "InvoiceController">
   <div class="panel-group">
     <div class="panel panel-default">
       <div class="panel-heading">Estimation Details:</div>
@@ -6,27 +7,120 @@
       <div class="form-group">
 				<div class="col-sm-4">
 					<label for="name">Registration Number:</label>
-					<label for="name">MP09-CG-9762</label> 
+					<label for="name">{{input.registrationNo}}</label> 
 				</div>
 				<div class="col-sm-4">
 					<label for="name">Car Name:</label>
-					<label for="name">TATA FIGO</label> 
+					<label for="name">{{input.vehicleName}}</label> 
 				</div>
 				<div class="col-sm-4">
 					<label for="name">Customer Name:</label>
-					<label for="name">Mark Johnson</label> 
+					<label for="name">{{input.customerName}}</label> 
 				</div>
 			</div>
       
       </div>
     </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">Details:</div>
-      <div class="panel-body">Panel Content</div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">Panel Header</div>
-      <div class="panel-body">Panel Content</div>
-    </div>
-  </div>
-</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Product / Service Description
+			</div>
+		</div>
+		
+		<div class="panel-body" >
+				<div class="col-sm-3">
+					<label for="email">Part / Service Name</label> 
+					<input type="text"
+						class="form-control" id="odometer" placeholder="" value=""
+						ng-model="part.name">
+				</div>
+				<div class="col-sm-2" >
+					<label for="email">Rate per item</label> <input type="text"
+						class="form-control" id="odometer" placeholder="" value="1"
+						ng-model="part.rate">
+				</div>
+				<div class="col-sm-2" >
+					<label for="email">Quantity</label> <input type="text"
+						class="form-control" id="odometer" placeholder="in km" value="1"
+						ng-model="part.quantity" ng-change="calculateTotal()">
+				</div>
+				<div class="col-sm-2">
+					<label for="email">Discount(%)</label> <input type="text"
+						class="form-control" id="odometer" placeholder="in km"
+						ng-model="part.discount" value="0.0" ng-change="calculateTotal()">
+				</div>
+				<div class="col-sm-2">
+					<label for="email">Total</label> <input type="text"
+						class="form-control" id="odometer" placeholder="0.0"
+						ng-model="part.total"  value="0.0">
+				</div>
+				<div class="col-sm-1" style="margin-top:2%">
+ 				<button type="button" class="btn btn-success"  ng-click="addPart()">ADD</button>
+				</div>
+			</div>
+			
+			
+			
+	<div class="panel panel-default" ng-show ="displayInvoiceTable">
+	  <div class="panel-heading">Order Summary</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-condensed" ng-table="parts">
+						<thead>
+							<tr>
+								<td><strong>Tick #</strong></td>
+								<td><strong>Part Name</strong></td>
+								<td class="text-center"><strong>Item Price</strong></td>
+								<td class="text-center"><strong>Item Quantity</strong></td>
+								<td class="text-center"><strong>Discount</strong></td>
+								<td class="text-right"><strong>Total</strong></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="part in $data" ng-class= "{'danger' : (!part.selected)}">
+								<td ><input type="checkbox" ng-model="part.selected" ng-change = "updateInvoiceOnChange(part,$index)"></td>
+								<td>{{part.name}}</td>
+								<td class="text-center">{{part.rate}}</td>
+								<td class="text-center">{{part.quantity}}</td>
+								<td class="text-center">{{part.discount}}%</td>
+								<td class="text-right">{{part.total}}</td>
+							</tr>
+							<tr>
+								<td class="emptyrow"></td>
+								<td class="emptyrow"></td>
+								<td class="emptyrow"></td>
+								<td class="emptyrow"></td>
+								<td class="emptyrow text-center" ng-dblclick="changerowToInput()"><strong>Shipping</strong></td>
+								<td class="emptyrow text-right">{{invoice.shipping}}</td>
+							</tr>
+							<tr>
+								<td class="highrow"></td>
+								<td class="highrow"></td>
+								<td class="highrow"></td>
+								<td class="highrow"></td>
+								<td class="highrow text-center"><strong>Advance Paid</strong></td>
+								<td class="highrow text-right">{{invoice.advancePaid}}</td>
+							</tr>
+							
+							<tr>
+								<td class="emptyrow"></td>
+								<td class="emptyrow"></td>
+								<td class="emptyrow"></td>
+								<td class="emptyrow"></td>
+								<td class="emptyrow text-center"><strong>Balance</strong></td>
+								<td class="emptyrow text-right">{{invoice.balance}}</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+				
+			</div>
+			<div class="form-group" style="text-align: center">
+			 					<button type="button" class="btn btn-success" style="margin-top:4%" ng-click="finaliseInvoice()">Finalise Order</button>
+			 					<!-- <button type="button" class="btn btn-warning" style="margin-top:4%" ng-click=""></button> -->
+			 					<button type="button" class="btn btn-danger" style="margin-top:4%" ng-click="cancelJob()">Cancel Job</button>
+						</div>
+		</div>
+	</div>
+	</div>

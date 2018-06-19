@@ -1,4 +1,9 @@
-<div class="row" ng-controller="JobController" style="width:96%">
+<style>
+input:invalid {
+    border: 1px solid red;
+}
+</style>
+<div class="row" ng-controller = "JobController" style="width:85%">
  <div class="panel-group">
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -6,30 +11,32 @@
 		</div>
 	</div>
 	<div class="col-lg-10">
-		<form role="form">
+	 <label class="col-md-12" style="color: #ff0000 !important;" ng-show="showmandatory">Please enter all mandatory * field in RED</label> 
+		<form role="form" name="jobForm">
 			<div class="form-group">
 				<div class="col-sm-4">
-					<label for="name">Registration Number</label> <input
-						class="form-control" type="text" value="MP-09-CG-9762"
-						ng-model="input.registrationNo">
+					<label for="name">Registration Number</label>
+					 <input	class="form-control" type="text" placeholder="MP-09-CG-9762"
+						ng-model="input.registrationNo" required>
+						
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-4">
-					<label for="email">Odometer</label> <input type="text"
+					<label for="email">Odometer</label> <input type="number"
 						class="form-control" id="odometer" placeholder="in km"
-						ng-model="input.odoMeter">
+						ng-model="input.odoMeter" >
 				</div>
 			</div>
-			<div class="form-group">
+			 <div class="form-group">
 				<div class="col-sm-4">
-					<label for="pwd">Average KM/day</label> <input type="text"
-						class="form-control" id="avgkm" ng-model="input.avgKmPerDay">
+					<label for="pwd">Average KM/day</label> <input type="number"
+						class="form-control" id="avgkm" ng-model="input.avgKmPerDay" >
 				</div>
-			</div>
+			</div> 
 			<div class="form-group">
 				<div class="col-sm-4">
-					<label for="pwd">VIN No.</label> <input type="text"
+					<label for="pwd">VIN No.</label> <input type="number"
 						class="form-control" ng-model="input.vinNo">
 				</div>
 			</div>
@@ -42,7 +49,7 @@
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="pwd">Find Car</label> 
-					<input class="form-control" list="browsers" name="browser" ng-model="input.vehicleName">
+					<input class="form-control" list="browsers" name="browser" ng-model="input.vehicleName" required>
 					<datalist id="browsers">
 						<option value="Internet Explorer">
 						<option value="Firefox">
@@ -55,7 +62,7 @@
 			<div class="form-group">
 				<div class="col-sm-4">
 					<label for="pwd">Make</label><input class="form-control"
-						list="browsers" name="browser" ng-model="input.make">
+						list="browsers" name="browser" ng-model="input.make" required>
 					<datalist id="browsers">
 						<option value="Internet Explorer">
 						<option value="Firefox">
@@ -67,7 +74,7 @@
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label for="pwd">Model</label> <input class="form-control"
-							list="browsers" name="browser" ng-model="input.model">
+							list="browsers" name="browser" ng-model="input.model" required>
 						<datalist id="browsers">
 							<option value="Internet Explorer">
 							<option value="Firefox">
@@ -149,18 +156,17 @@
 						</div>
 					</div>
 
-
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Customer Name</label> <input type="text"
-								class="form-control" ng-model="input.customerName">
+								class="form-control" ng-model="input.customerName" required>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="pwd">Mobile Number</label> <input type="text"
-								class="form-control" ng-model="input.mobileNumber">
+							<label for="pwd">Mobile Number</label> <input type="number" maxlength="10"
+								class="form-control" ng-model="input.mobileNumber" required >
 						</div>
 					</div>
 
@@ -178,10 +184,9 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label class="control-label" for="date">Delievery Date</label> <input
-								class="form-control" id="date" name="date"
-								placeholder="DD/MM/YYY" type="text" ng-model="input.delieveryDate"
-								ng-init="datePicketConfiguration()" />
+							<label class="control-label" for="date">Delievery Date</label>
+							 <input	class="form-control" id="frompicker" name="date" placeholder="DD/MM/YYY" type="text" ng-model="input.delieveryDate" 
+								ng-init="datePicketConfiguration()"/>
 						</div>
 					</div>
 					<label style="margin-top: 2%; margin-left: 2%;">Advance
@@ -234,9 +239,9 @@
 						</div>
 						
 						<div class="form-group" style="text-align: center">
-			 					<button type="button" class="btn btn-success btn-md" style="margin-top:4%" ng-click="createJob(input)">Estimate Now</button>
-			 					<button type="button" class="btn btn-warning" style="margin-top:4%" ng-click="estimateLater()">Estimate Later</button>
-			 					<button type="button" class="btn btn-danger" style="margin-top:4%" ng-click="cancelJob()">Cancel Job</button>
+			 					<button type="button" class="btn btn-success btn-md" style="margin-top:4%" ng-click="submitted=true;estimateJob(input,jobForm.$valid)">Estimate Now</button>
+			 					<button type="button" class="btn btn-warning" style="margin-top:4%" ng-click="submitted=true;estimateLater()">Estimate Later</button>
+			 					<!-- <button type="button" class="btn btn-danger" style="margin-top:4%" ng-click="cancelJob()">Cancel Job</button> -->
 						</div>
 				</form>
 				

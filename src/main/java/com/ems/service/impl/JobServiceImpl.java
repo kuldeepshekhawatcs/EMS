@@ -13,7 +13,9 @@ import com.ems.dao.UserRepository;
 import com.ems.entities.Employee;
 import com.ems.entities.Job;
 import com.ems.entities.User;
+import com.ems.litrals.JobStatus;
 import com.ems.service.EmployeeService;
+import com.ems.service.InvoiceService;
 import com.ems.service.JobService;
 
 @Service
@@ -23,6 +25,7 @@ public class JobServiceImpl implements JobService{
 	@Autowired
 	private JobRepository JobRepository;
 
+	
 	@Override
 	public Job insert(Job job) throws Exception{
 		return JobRepository.save(job);
@@ -39,14 +42,17 @@ public class JobServiceImpl implements JobService{
 	}
 
 	@Override
-	public Job findEmployeeById(Integer jobId) {
+	public Job findJobById(Integer jobId) {
 		return JobRepository.findOne(jobId);
 	}
 
 	@Override
-	public Job findJobById(String jobId) {
-		return null;
+	public Job cancelJob(Integer id) throws Exception {
+		Job job = findJobById(id);
+		job.setStatus(JobStatus.CANCEL_JOBCARD);
+		return update(job);
 	}
+
 
 	
 }

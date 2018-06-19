@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ems.entities.Job;
+import com.ems.litrals.JobStatus;
 import com.ems.service.JobService;
 import com.ems.utilities.JobListDTO;
 
@@ -16,12 +18,6 @@ public class JobRestController {
 	
 	@Autowired
 	JobService jobService;
-	
-	@RequestMapping(value = "/job/addjob", method = RequestMethod.POST)
-	public String addCandidate(@RequestBody Job job) throws Exception {
-		System.out.println(job);
-		return null;
-	}
 	
 	@RequestMapping(value = "/getAllJobs", method = RequestMethod.GET)
 	@ResponseBody
@@ -35,5 +31,24 @@ public class JobRestController {
 	@ResponseBody
 	public Job loadNewJob() throws Exception{
 		return new Job();
+	}
+	
+	@RequestMapping(value = "/create-new-job", method = RequestMethod.POST)
+	@ResponseBody
+	public Job createNewJob(@RequestBody Job job) throws Exception{
+		job.setStatus(JobStatus.ESTIMATION_PENDING);
+		return jobService.insert(job);
+	}
+	
+	@RequestMapping(value = "/getJobCartById", method = RequestMethod.GET)
+	@ResponseBody
+	public Job getJobCartById(@RequestParam("id") Integer id) throws Exception{
+		return jobService.findJobById(id);
+	}
+	
+	@RequestMapping(value = "/cancel-job", method = RequestMethod.PUT)
+	@ResponseBody
+	public Job cancelJob(@RequestParam("id") Integer id) throws Exception{
+		return jobService.cancelJob(id);
 	}
 }

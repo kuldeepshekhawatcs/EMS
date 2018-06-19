@@ -63,6 +63,30 @@ myApp.factory('homeFactory', function($resource,$http){
 			method : 'GET',
 			url:  '/EMS/load-new-job'
 		},
+		'createJob' : {
+			method : 'POST',
+			url:  '/EMS/create-new-job'
+		},
+		'getJobCartById' : {
+			method : 'GET',
+			url:  '/EMS/getJobCartById'
+		},
+		'createInvoice' : {
+			method : 'POST',
+			url:  '/EMS/create-invoice'
+		},
+		'finaliseInvoice' : {
+			method : 'POST',
+			url:  '/EMS/finalise-invoice'
+		},
+		'cancelJob' : {
+			method : 'PUT',
+			url:  '/EMS/cancel-job'
+		},
+		'getInvoiceByJobId' : {
+			method : 'GET',
+			url:  '/EMS/getInvoiceByJobId'
+		},
 		
 	});
 });

@@ -1,11 +1,15 @@
 package com.ems.entities;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -13,12 +17,12 @@ import javax.validation.constraints.NotNull;
 @Table(name="job")
 public class Job {
 
-	@Id @NotNull
-	private String ticketNo;
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	private int ticketNo;
 	@NotNull
 	private String registrationNo;
 	private String status;
-	private String advisor;
+	private String advisor;	
 	private String vehicleName;
 	private java.util.Date arrivalDate;
 	private java.util.Date delieveryDate;
@@ -43,7 +47,6 @@ public class Job {
 	@JoinColumn(name = "cust_id")
 	@Basic(fetch = FetchType.LAZY)
 	private Customer customer;
-	
 	
 	public Customer getCustomer() {
 		return customer;
@@ -141,10 +144,10 @@ public class Job {
 	public void setInsuranceName(String insuranceName) {
 		this.insuranceName = insuranceName;
 	}
-	public String getTicketNo() {
+	public int getTicketNo() {
 		return ticketNo;
 	}
-	public void setTicketNo(String ticketNo) {
+	public void setTicketNo(int ticketNo) {
 		this.ticketNo = ticketNo;
 	}
 	public String getRegNo() {
@@ -195,5 +198,6 @@ public class Job {
 	public void setPartStatus(String partStatus) {
 		this.partStatus = partStatus;
 	}
+	
 	
 }

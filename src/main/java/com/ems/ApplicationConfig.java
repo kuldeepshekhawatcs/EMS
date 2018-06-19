@@ -43,19 +43,7 @@ public class ApplicationConfig  extends SpringBootServletInitializer implements 
     @Override
     public void run(String... args) throws Exception {
 
-		Job job = new Job();
-		job.setAdvisor("Rohan");
-		job.setArrivalDate(new Date());
-		job.setDelieveryDate(DateUtils.addDays(new Date(), 1));
-		job.setMobileNumber("9039393939");
-		job.setRegNo("MP09");
-		job.setStatus("READY FOR DELIVERY");
-		job.setTicketNo("TIC-101");
-		job.setVehicleName("Toyota Corolla");
-		job.setCustomerName("Shankar Reddy");
-		job.setInsuranceName("IFCO TOKIO");
 		
-		jobRepository.save(job);
 		
 		
 	}

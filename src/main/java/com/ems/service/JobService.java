@@ -12,7 +12,7 @@ public interface JobService {
 	public Job insert(Job employee) throws Exception;
 	public List<Job> findAll() throws Exception;
 	public Job update(Job convertedObject) throws Exception;
-	public Job findEmployeeById(Integer jobId);
-	public Job findJobById(String jobId);
+	public Job findJobById(Integer jobId);
+	public Job cancelJob(Integer id) throws Exception;
 }
 	
