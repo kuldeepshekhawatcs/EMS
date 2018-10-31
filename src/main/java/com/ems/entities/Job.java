@@ -1,7 +1,8 @@
 package com.ems.entities;
 
+import java.util.Date;
+
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,13 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="job")
-public class Job {
+public class Job{
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int ticketNo;
@@ -43,6 +45,13 @@ public class Job {
 	private String fuelType;
 	private String serviceType;
 	private String complaint;
+	private Date createdTime;
+	public Date getCreatedTime() {
+		return createdTime;
+	}
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
 	@ManyToOne
 	@JoinColumn(name = "cust_id")
 	@Basic(fetch = FetchType.LAZY)

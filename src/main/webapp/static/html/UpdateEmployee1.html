@@ -3,7 +3,7 @@ input:invalid {
     border: 1px solid red;
 }
 </style>
-<div class="row" ng-controller="EmployeeController" style="width: 85%">
+<div class="row" ng-controller="EmployeeEditController" style="width: 85%">
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -20,7 +20,7 @@ input:invalid {
 					<div class="col-sm-4">
 						<label for="name">First Name</label> <input type="text"
 							id="firstName" placeholder="First Name" class="form-control"
-							ng-model="input.firstName" autofocus   required/>
+							ng-model="input.user.firstName" autofocus  upper-case required/>
 
 					</div>
 				</div>
@@ -28,14 +28,14 @@ input:invalid {
 					<div class="col-sm-4">
 						<label for="email">Middle Name</label> <input type="text"
 							id="middleName" placeholder="Middle Name" class="form-control"
-							ng-model="input.middleName" autofocus  >
+							ng-model="input.user.middleName" autofocus>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label for="pwd">Last Name</label> <input type="text"
 							id="lastName" placeholder="Last Name" class="form-control"
-							ng-model="input.lastName" autofocus  required
+							ng-model="input.user.lastName" autofocus upper-case required
 >
 					</div>
 				</div>
@@ -44,33 +44,31 @@ input:invalid {
 						 <label for="pwd">Gender</label>
 						 <label class="radio-inline">
 							<input type="radio" name="Gender"  id="femaleRadio"
-							ng-model="input.gender" value="FEMALE"/>Female
+							ng-model="input.user.gender" />Female
 						</label> <label class="radio-inline"> 
 						<input type="radio"
-							name="Gender" id="maleRadio"  value="MALE" ng-model="input.gender" checked/>Male
+							name="Gender" id="maleRadio"  value="MALE" ng-model="input.user.gender" checked/>Male
 						</label> 
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-4">
-						<label for="pwd">Phone</label> <input type="number" id="phoneNumber"
+						<label for="pwd">Phone</label> <input type="text" id="phoneNumber"
 							placeholder="Mobile Number" class="form-control"
-							ng-model="input.phoneNumber"  required>
+							ng-model="input.user.phoneNumber" upper-case required>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label for="pwd">Email</label> <input type="email" id="email"
-							placeholder="Email" class="form-control" ng-model="input.email" 
+							placeholder="Email" class="form-control" ng-model="input.user.email" 
 								upper-case required>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label for="pwd">Date of Birth</label> <input type="date"
-							id="birthDate" class="form-control" ng-model="input.dateOfBirth" 
-							upper-case required
-							>
+							id="birthDate" class="form-control" ng-model="input.user.dateOfBirth" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -84,21 +82,21 @@ input:invalid {
 					<div class="col-sm-4">
 						<label for="pwd">Address</label> <input type="text" id="address"
 							placeholder="Address" class="form-control"
-							ng-model="input.address" autofocus>
+							ng-model="input.user.address" autofocus>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label for="pwd">Pin Code</label> <input type="text" id="pinCode"
 							placeholder="Pin Code" class="form-control"
-							ng-model="input.pinCode" autofocus>
+							ng-model="input.user.pinCode" autofocus>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-4">
-						<label for="pwd">Country</label> <input type="text" id="country"
-							placeholder="Country Code" class="form-control"
-							ng-model="input.country" autofocus>
+						<label for="pwd">Pin Code</label> <input type="text" id="country"
+							placeholder="Country" class="form-control"
+							ng-model="input.user.country" autofocus>
 					</div>
 				</div>
 
@@ -106,14 +104,14 @@ input:invalid {
 					<div class="col-sm-4">
 						<label for="pwd">Bank Account Number</label> <input type="text"
 							id="bankAccount" placeholder="Bank Account Number"
-							class="form-control" ng-model="input.bankAccountNumber" autofocus>
+							class="form-control" ng-model="input.user.bankAccountNumber" autofocus>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-4">
 						<label for="pwd">Bank Name</label> <input type="text"
 							id="bankName" placeholder="Bank Name" class="form-control"
-							ng-model="input.bankName" autofocus>
+							ng-model="input.user.bankName" autofocus>
 
 					</div>
 				</div>
@@ -122,7 +120,7 @@ input:invalid {
 					<div class="col-sm-4">
 						<label for="pwd">Branch Name</label> <input type="text"
 							id="branchaddress" placeholder="Branch Name" class="form-control"
-							ng-model="input.branchName" autofocus>
+							ng-model="input.user.branchName" autofocus>
 					</div>
 				</div>
 
@@ -130,7 +128,7 @@ input:invalid {
 					<div class="col-sm-4">
 						<label for="pwd">IFSC Code</label> <input type="text" id="ifsc"
 							placeholder="IFSC Code" class="form-control"
-							ng-model="input.ifscCode" autofocus>
+							ng-model="input.user.ifscCode" autofocus>
 
 					</div>
 				</div>
@@ -138,7 +136,7 @@ input:invalid {
 					<div class="col-sm-4">
 						<label for="pwd">Employee Type</label><input class="form-control"
 							list="employeeTypeList" name="employeeTypeList"
-							ng-model="input.employeeType" ng-init="populatedDropDownLists()" required>
+							ng-model="input.employeeType.employeeTypeDescription" ng-init="populatedDropDownLists()" required>
 						<datalist id="employeeTypeList">
 							<option ng-repeat="x in employeeTypeList" value="{{x}}" />
 						</datalist>
@@ -146,7 +144,7 @@ input:invalid {
 					<div class="form-group">
 						<div class="col-sm-4">
 							<label for="pwd">Role</label> <input class="form-control"
-								list="roleList" name="roleList" ng-model="input.role"
+								list="roleList" name="roleList" ng-model="input.role.roleName"
 								upper-case required>
 							<datalist id="roleList">
 								<option ng-repeat="x in rolesList" value="{{x}}" />
@@ -161,7 +159,9 @@ input:invalid {
 							Number</label> <input type="text" id="aadhaarNum"
 							placeholder="12 Digit Unique Aadhaar Number" class="form-control"
 							value="1241-1122-2333-1111" autofocus
-							ng-model="input.adharNumber">
+							ng-model="input.user.adharNumber">
+						<a ng-href = "" class="glyphicon glyphicon-download-alt"  ng-show="showRemoveLink('adhar')"  ng-click="downloadAttachment('adhar');$event.preventDefault()"></a>  
+						<a ng-href = "" class="glyphicon glyphicon-trash" ng-show="showRemoveLink('adhar')" ng-click="removeAttachment('adhar');$event.preventDefault()"></a>
 						<div class="fileupload fileupload-new" data-provides="fileupload">
 							<span class="btn btn-primary btn-sm btn-file"><span
 								class="fileupload-new">Select File</span> <span
@@ -178,8 +178,11 @@ input:invalid {
 						<label for="panLbl" class="control-label">PAN Number</label> <input
 							type="text" id="panNum" placeholder="PAN Number"
 							class="form-control" value="FEJP4448O" autofocus
-							ng-model="input.panNumber" name="pan">
-						<!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+							ng-model="input.user.panNumber" name="pan">
+							
+							<a ng-href = "" class="glyphicon glyphicon-download-alt"  ng-show="showRemoveLink('pan')"  ng-click="downloadAttachment('pan');$event.preventDefault()"></a>
+							<a ng-href = "" class="glyphicon glyphicon-trash" ng-show="showRemoveLink('pan')"  ng-click="removeAttachment('pan');$event.preventDefault()"></a>
+							
 						<div class="fileupload fileupload-new" data-provides="fileupload">
 							<span class="btn btn-primary btn-sm btn-file"><span
 								class="fileupload-new">Select File</span> <span
@@ -197,8 +200,10 @@ input:invalid {
 							License</label> <input type="text" id="dlNum"
 							placeholder="Driving License Number" class="form-control"
 							value="MH/14/38947/3847683" autofocus
-							ng-model="input.drivinglicenseNumber">
-						<!-- <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span> -->
+							ng-model="input.user.drivinglicenseNumber">
+							<a ng-href = "" class="glyphicon glyphicon-download-alt" ng-show="showRemoveLink('drivinglicense')" ng-click="downloadAttachment('drivinglicense');$event.preventDefault()"></a>
+							<a ng-href = "" class="glyphicon glyphicon-trash" ng-show="showRemoveLink('drivinglicense')" ng-click="removeAttachment('drivinglicense');$event.preventDefault()"></a>
+							
 						<div class="fileupload fileupload-new" data-provides="fileupload">
 							<span class="btn btn-primary btn-sm btn-file"><span
 								class="fileupload-new">Select File</span> <span
@@ -213,12 +218,7 @@ input:invalid {
 				</div>
 				<div class="form-group" style="text-align: center;">
 					<div class="col-sm-12">
-						<button type="button" class="btn btn-success"
-							ng-click="save(user,employeeForm.$valid)">Save</button>
-							<button type="button" class="btn btn-danger" 
-							ng-click="cancel()">Cancel</button>
-						<!-- <button type="button" class="btn btn-warning" ng-show="showUpdateButton"
-							ng-click="editUser(user)">Update</button> -->
+						 <button type="button" class="btn btn-warning" ng-click="UpdateUser(user)">Update</button> 
 					</div>
 				</div>
 			</form>

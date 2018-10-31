@@ -35,7 +35,7 @@ myApp.config(function($routeProvider) {
     
     })
     .when("/editEmployee", {
-        templateUrl : "html/UpdateEmployee.html"
+        templateUrl : "html/UpdateEmployee1.html"
               
     })
      .when("/applyLeave", {
@@ -73,3 +73,31 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
        }
     };
  }]);
+
+myApp.directive('upperCase', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, element, attrs, modelCtrl) {
+            modelCtrl.$parsers.push(function(input) {
+                return input ? input.toUpperCase() : "";
+            });
+            element.css("text-transform","uppercase");
+        }
+    };
+})
+
+myApp.filter('unique', function() {
+  return function (arr, field) {
+	  var temp ={};
+	  var r = [];
+    for(i=0; i<arr.length;i++) {
+    	temp[arr[i][field]] = arr[i][field];
+    }
+    for(i in temp) {
+      r.push(temp[i]);
+    }
+    return r;
+  };
+})
+
+

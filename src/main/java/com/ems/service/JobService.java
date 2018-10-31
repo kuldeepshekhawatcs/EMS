@@ -14,5 +14,6 @@ public interface JobService {
 	public Job update(Job convertedObject) throws Exception;
 	public Job findJobById(Integer jobId);
 	public Job cancelJob(Integer id) throws Exception;
+	public List<String> findPaymentModes();
 }
 	

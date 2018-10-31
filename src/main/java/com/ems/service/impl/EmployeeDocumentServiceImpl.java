@@ -44,4 +44,9 @@ public class EmployeeDocumentServiceImpl implements EmployeeDocumentService{
 	public EmployeeDocuments update(EmployeeDocuments empDoc) {
 		return employeeDocRepository.save(empDoc);
 	}
+
+	@Override
+	public EmployeeDocuments findById(Integer docId) {
+		return employeeDocRepository.findOne(docId);
+	}
 }

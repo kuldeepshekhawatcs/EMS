@@ -1,10 +1,23 @@
 myController.controller('EmployeeEditController',['$scope','$rootScope','fileUploadService','NgTableParams','homeFactory','$location','$window',function($scope,$rootScope,fileUploadService,NgTableParams,homeFactory,$location,$window){
 	
 	$scope.input = {};
-	var editEmployeeData = $location.search();
-	$scope.input = angular.copy(editEmployeeData.editData);
 	$scope.input.availableDocs = {};
-	alert(JSON.stringify($scope.input));
+	function getEmployeeProfile() {
+		var selectIdFromTable = $location.search();
+		homeFactory.getEmployeeProfile({employeeId : selectIdFromTable.editData.employeeId})
+		.$promise.then(function(data) {
+			if(data != undefined)
+		{
+				$scope.input = data;
+				getEmployeeAttachmentByEmployeeId();
+		}
+	        }, function(data) {
+	          alert("Something went wrong !!");
+	        });
+	}
+	
+	getEmployeeProfile();
+	
 	$scope.removeAttachment = function(data)
 	{
 		for (var key in $scope.input.availableDocs) {
@@ -12,9 +25,11 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 		    if(obj.documentDescription == data)
 		    	homeFactory.deleteAttachmentById({documentId : obj.documentId})
 				.$promise.then(function(data) {
-					if(data == "success" )
+					alert(JSON.stringify(data))
+					if(data != undefined )
 					{
 						alert("Sucessfully Removed");
+						getEmployeeAttachmentByEmployeeId();
 					}
 			        }, function(data) {
 			          alert("Something went wrong !!");
@@ -31,6 +46,8 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 		    }
 	}
 	
+	
+	function getEmployeeAttachmentByEmployeeId() { 
 	homeFactory.getEmployeeAttachmentByEmployeeId({employeeId : $scope.input.user.id})
 			.$promise.then(function(data) {
 				if(data != undefined)
@@ -40,10 +57,11 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 		        }, function(data) {
 		          alert("Something went wrong !!");
 		        });
-	
+	}
 	
 	$scope.UpdateUser = function()
 	{
+		alert(JSON.stringify($scope.input))
 			var formData = new FormData();
 		
 			formData.append('data', angular.toJson($scope.input));
@@ -63,11 +81,7 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 				$scope.drivingLicenseFile = document.getElementById("drivinglicense").files[0];
 				formData.append("drivinglicense", $scope.drivingLicenseFile);
 			}
-			if(document.getElementById("pvd").files[0] != undefined)
-			{
-				$scope.pvdFile = document.getElementById("pvd").files[0];
-				formData.append("pvd", $scope.pvd);
-			}
+			
 		
 		fileUploadService.uploadFilesWithData('/EMS/updateemployee', formData).success(function(response){
 				if(response=="success"){
@@ -79,7 +93,26 @@ myController.controller('EmployeeEditController',['$scope','$rootScope','fileUpl
 			    	});
 	}
 	
+	$scope.populatedDropDownLists = function()
+	{
+		homeFactory.dropdownlists().$promise.then(function(data) {
+			if (data != undefined) {
+					$scope.rolesList = data.rolesList;
+					$scope.employeeTypeList = data.empTypeList;
+			}
+		}, function(data) {
+			alert("Something went wrong !!");
+		});
+	} 
 	
-		
+	$scope.downloadAttachment = function (data)
+	{
+		for (var key in $scope.input.availableDocs) {
+		    var obj = $scope.input.availableDocs[key];
+		    if(obj.documentDescription == data)
+		    	var s = "/EMS/downloadAttachmentById/" + obj.documentId;
+		    	$window.open(s);
+		    }
+	}
 	
 }]);

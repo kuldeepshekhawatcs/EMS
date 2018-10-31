@@ -39,7 +39,6 @@ myController.controller('InvoiceController',['$scope','$rootScope','fileUploadSe
 		$scope.invoice.items.push($scope.part);
 		$scope.invoice.job.ticketNo = $scope.input.ticketNo;
 		createUpdateInvoice();
-		
 	}
 	
 	$scope.calculateTotal = function(part)

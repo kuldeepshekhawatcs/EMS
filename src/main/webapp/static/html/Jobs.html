@@ -7,22 +7,19 @@
                         <input type="text" id="firstName" placeholder="Search Employee" class="form-control" autofocus ng-model="searchText">
                     </div>
          </div>
-         </div>
+   
      <div class="panel-body">  
     <div class="row" style="overflow-x:scroll;overflow-y:scroll;">
   <table class="table table-striped table-bordered" ng-table="jobTable" >
     <thead>
       									<tr>
-      									 <th>
-      									Job
-      									 </th>
-                                        <th style="width:17%">Reg No.</th>
-                                        <th style="width:10%">Status</th>
-                                        <th style="width:12%">Vehicle</th>
-                                        <th style="width:12%">Arrival Date</th>
-                                        <th style="width:12%">Delivered Date</th>
-                                        <th style="width:12%">Mobile No.</th>
-                                        <th style="width:12%">Owner</th>
+      									 <th>Job</th>
+                                        <th >Reg No.</th>
+                                        <th >Status</th>
+                                        <th >Vehicle</th>
+                                        <th >Delivered Date</th>
+                                        <th >Mobile No.</th>
+                                        <th >Owner</th>
                                         <!-- <th>Action</th> -->
                                         
     </thead>
@@ -38,7 +35,6 @@
         'label label-danger': (job.status == 'PENDING') ,
          'label label-warning': (job.status == 'ESTIMATED')}">{{job.status}}</span></td>
         <td>{{job.vehicleName}} </td>
-        <td>{{job.arrivalDate | date: 'dd-MM-yyyy'}}</td> 
         <td>{{job.delieveryDate | date: 'dd-MM-yyyy'}}</td>
         <td>{{job.mobileNumber}}</td>
         <td>{{job.customerName}}</td>

@@ -87,6 +87,22 @@ myApp.factory('homeFactory', function($resource,$http){
 			method : 'GET',
 			url:  '/EMS/getInvoiceByJobId'
 		},
+		'getVehicles' : {
+			method : 'GET',
+			url:  '/EMS/getVehicles'
+	
+		},
+		'dropdownlists' : {
+			method : 'GET',
+			url:  '/EMS/dropdownlists'
+		},
+		'downloadAttachmentById' : {
+			method : 'GET',
+			url:  '/EMS/downloadAttachmentById',
+			responseType: 'arraybuffer'
+		}
 		
 	});
+	
+	
 });

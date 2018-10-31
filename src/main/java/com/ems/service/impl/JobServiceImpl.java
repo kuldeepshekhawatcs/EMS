@@ -7,15 +7,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ems.dao.EmployeeRepository;
 import com.ems.dao.JobRepository;
-import com.ems.dao.UserRepository;
-import com.ems.entities.Employee;
+import com.ems.entities.Customer;
 import com.ems.entities.Job;
-import com.ems.entities.User;
 import com.ems.litrals.JobStatus;
-import com.ems.service.EmployeeService;
-import com.ems.service.InvoiceService;
+import com.ems.service.CustomerService;
 import com.ems.service.JobService;
 
 @Service
@@ -25,9 +21,19 @@ public class JobServiceImpl implements JobService{
 	@Autowired
 	private JobRepository JobRepository;
 
+	@Autowired
+	private CustomerService customerService;
 	
 	@Override
 	public Job insert(Job job) throws Exception{
+		Customer customer = null;
+		if(job.getCustomer() != null)
+		{
+			customer = job.getCustomer();
+			customer.setPaymentMode(customerService.getPaymentByName(customer.getPaymentMode()));
+			customer = customerService.insert(customer);
+		}
+		job.setCustomer(customer);
 		return JobRepository.save(job);
 	}
 	
@@ -51,6 +57,12 @@ public class JobServiceImpl implements JobService{
 		Job job = findJobById(id);
 		job.setStatus(JobStatus.CANCEL_JOBCARD);
 		return update(job);
+	}
+
+	@Override
+	public List<String> findPaymentModes() {
+		return JobRepository.findPaymentModes();
+		
 	}
 
 

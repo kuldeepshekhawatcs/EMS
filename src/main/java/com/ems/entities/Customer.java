@@ -2,11 +2,16 @@ package com.ems.entities;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -16,14 +21,36 @@ public class Customer {
 	@Id@GeneratedValue(strategy=GenerationType.AUTO)
 	private int customerId;
 	private String customerName;
-	private String paymentMode;
-	private String address;
+	
+	@ManyToOne
+	@JoinColumn(name = "paymentmode_id")
+	@Basic(fetch = FetchType.LAZY)
+	private PaymentMode paymentModeObject;
+	
 	private String bankName;
 	private String chequeNo;
 	private String amount;
 	private Date dateOfPayment;
+	private String mobile;
+	@Transient
+	private String paymentMode;
 	
-	
+	public void setPaymentMode(PaymentMode paymentMode) {
+		this.paymentModeObject = paymentMode;
+	}
+	private String address;
+	public PaymentMode getPaymentModeObject() {
+		return paymentModeObject;
+	}
+	public void setPaymentModeObject(PaymentMode paymentModeObject) {
+		this.paymentModeObject = paymentModeObject;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 	public String getCustomerName() {
 		return customerName;
 	}

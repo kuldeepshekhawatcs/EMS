@@ -8,6 +8,7 @@ myController.controller('ViewController',['$scope','$rootScope','fileUploadServi
 				if(data != undefined)
 			{
 					$scope.input = data;
+					alert(JSON.stringify($scope.input));
 					$rootScope.employeeId = data.employeeId;
 			}
 		        }, function(data) {

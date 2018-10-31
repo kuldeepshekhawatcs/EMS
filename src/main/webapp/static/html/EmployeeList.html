@@ -1,4 +1,5 @@
-<div class="panel panel-default" ng-controller="EmployeeController">
+<div class="row" ng-controller="EmployeeController" style="width: 85%">
+<div class="panel panel-default" >
                         <div class="panel-heading">
                            <a href="#/addEmployee" class="btn btn-info btn-sm">
           <span class="glyphicon glyphicon-plus"></span> Add Employee 
@@ -7,7 +8,8 @@
                         <input type="text" id="firstName" placeholder="Search Employee" class="form-control" autofocus ng-model="searchText">
                     </div>
          </div>
-                        <div class="panel-body" style="overflow-x:scroll;overflow-y:scroll">
+  <div class="panel-body" >
+  <div class = "row" style="overflow-x:scroll;overflow-y:scroll">
   <table class="table table-striped table-bordered" ng-table="usersTable" cellspacing="0">
     <thead>
       									<tr>
@@ -16,10 +18,10 @@
                                         <th>Date of Joining</th>
                                         <th>Cell Number</th>
                                         <th>Date of Birth</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
-                                        <th>Country</th>
-                                        <th>Employee Type</th>
+                                        <th style="width:10%">Email</th>
+                                        <!-- <th>Address</th> -->
+                                      <!--   <th>Country</th> -->
+                                        <!-- <th>Employee Type</th>
                                         <th>Bank Account Number</th>
                                         <th>Bank Name</th>
                                         <th>Branch Name</th>
@@ -28,7 +30,7 @@
                                         <th>Driving License Number</th>
                                         <th>ADHAR Number</th>
                                         <th>Leave Taken</th>
-                                        <th>Leave Balance</th>
+                                        <th>Leave Balance</th> -->
 										 <th>Action</th></tr>
     </thead>
     <tbody>
@@ -41,19 +43,18 @@
         <td>{{emp.user.phoneNumber}} </td>
         <td>{{emp.user.dateOfBirth}}</td>
         <td>{{emp.user.email}}</td>
-        <td>{{emp.user.address}}</td>
-        <td>{{emp.user.country}}</td>
-        <td>{{emp.employeeType.employeeTypeDescription}}</td>
+      <!--   <td>{{emp.user.address}}</td> -->
+       <!--  <td>{{emp.user.country}}</td> -->
+       <!--  <td>{{emp.employeeType.employeeTypeDescription}}</td>
         <td>{{emp.user.bankAccountNumber}}</td>
         <td>{{emp.user.bankName}}</td>
         <td>{{emp.user.branchName}}</td>
         <td>{{emp.user.ifscCode}}</td>
         <td>{{emp.user.panNumber}}</td>
         <td>{{emp.user.drivinglicenseNumber}}</td>
-        <td>{{emp.user.adharNumber}}</td>
-         <td></td>
-          <td></td>
-        
+        <td>{{emp.user.adharNumber}}</td> -->
+        <!--  <td></td>
+          <td></td> -->
         <td>
 		<span><a href="" class="glyphicon glyphicon-edit" ng-click="editUser(emp);$event.preventDefault()" data-popout="true"></a></span> 	
         <span><a href="" class="glyphicon glyphicon-trash" ng-click="deleteUser($event.target.href);$event.preventDefault()" data-popout="true"></a></span>  
@@ -62,4 +63,6 @@
       </tr>
     </tbody>
   </table>
+  </div>
+  </div>
   </div>

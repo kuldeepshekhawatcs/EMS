@@ -1,5 +1,9 @@
 package com.ems.controller;
 
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ems.entities.Job;
+import com.ems.helper.SortUtility;
 import com.ems.litrals.JobStatus;
 import com.ems.service.JobService;
 import com.ems.utilities.JobListDTO;
@@ -23,7 +28,9 @@ public class JobRestController {
 	@ResponseBody
 	public JobListDTO getAllEmployee() throws Exception{
 		JobListDTO jobListDTO = new JobListDTO();
-		jobListDTO.setJobList(jobService.findAll());
+		List<Job> list = jobService.findAll();
+		Collections.sort(list,SortUtility.DateComparator);
+		jobListDTO.setJobList(list);
 		return jobListDTO;
 	}
 	
@@ -37,6 +44,7 @@ public class JobRestController {
 	@ResponseBody
 	public Job createNewJob(@RequestBody Job job) throws Exception{
 		job.setStatus(JobStatus.ESTIMATION_PENDING);
+		job.setCreatedTime(new Date());
 		return jobService.insert(job);
 	}
 	
@@ -51,4 +59,6 @@ public class JobRestController {
 	public Job cancelJob(@RequestParam("id") Integer id) throws Exception{
 		return jobService.cancelJob(id);
 	}
+	
+	
 }

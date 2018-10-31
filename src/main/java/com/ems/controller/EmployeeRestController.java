@@ -34,6 +34,7 @@ import com.ems.service.EmployeeService;
 import com.ems.service.EmployeeTypeService;
 import com.ems.service.RoleService;
 import com.ems.utilities.EmployeeDTO;
+import com.ems.utilities.EmployeeDropDownlist;
 import com.ems.utilities.EmployeeListDTO;
 import com.ems.utilities.EmployeeUtility;
 import com.google.gson.Gson;
@@ -103,24 +104,17 @@ public class EmployeeRestController {
 	@RequestMapping(value = "/updateemployee", method = RequestMethod.POST)
 	public String updateCandidate(MultipartHttpServletRequest request,@RequestHeader HttpHeaders requestHeader) throws Exception {
 		String employeeData = request.getParameter("data");
-		GsonBuilder builder = new GsonBuilder(); 
-		builder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
-			@Override
-			public Date deserialize(JsonElement json,
-					java.lang.reflect.Type typeOfT, JsonDeserializationContext context)
-					throws JsonParseException {
-				return new Date(json.getAsJsonPrimitive().getAsLong()); 
-			} 
-		});
-		Employee convertedObject = builder.create().fromJson(employeeData,Employee.class);
-		Employee emp = employeeService.update(convertedObject);
+		Gson builder = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		Employee employee = builder.fromJson(employeeData,Employee.class);
+		//Employee employee = EmployeeUtility.convertToEmployee(convertedObject);
+		Employee emp = employeeService.update(employee);
 		Iterator<String> itr = request.getFileNames();
-		List<EmployeeDocuments> docList = employeeDocService.getEmployeeAttachmentByEmployeeId(emp.getEmployeeId());
+		List<EmployeeDocuments> docList = employeeDocService.getEmployeeAttachmentByEmployeeId(emp.getUser().getId());
 		while (itr.hasNext()) {
 			String key = itr.next();
 			BeanPropertyValueEqualsPredicate predicate = new BeanPropertyValueEqualsPredicate("documentDescription", key);
 			EmployeeDocuments empDoc = (EmployeeDocuments) org.apache.commons.collections.CollectionUtils.find(docList, predicate);
-			if(emp == null)
+			if(empDoc == null)
 			{
 				empDoc = new EmployeeDocuments();
 			}
@@ -129,6 +123,7 @@ public class EmployeeRestController {
 			Blob blob = new SerialBlob(bytes);
 			empDoc.setDocumentDescription(key);
 			empDoc.setDoc(blob);
+			empDoc.setUser(emp.getUser());
 			employeeDocService.update(empDoc);
 		}
 		return Literals.SUCCESS_MESSAGE;
@@ -160,5 +155,14 @@ public class EmployeeRestController {
 	public Employee findEmployeeByUserId(@RequestParam("userId") Integer userId) throws Exception{
 		return employeeService.findEmployeeByUserId(userId);
 	}
-
+	
+	@RequestMapping(value = "/dropdownlists", method = RequestMethod.GET)
+	@ResponseBody
+	public EmployeeDropDownlist getDropDownlistsForEmployeeAddition() throws Exception{
+		EmployeeDropDownlist employeeDropDownlist = new EmployeeDropDownlist();
+		employeeDropDownlist.setEmpTypeList(employeeTypeService.getDistinctEmployeeType());
+		employeeDropDownlist.setRolesList(roleService.getDistinctRole());
+		return employeeDropDownlist;
+		 
+	}
 }

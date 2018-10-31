@@ -7,8 +7,57 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.ems.entities.User.Gender;
+import com.google.gson.Gson;
 
 public class EmployeeDTO {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
+	
+	private String userName;
+
+	private String password;
+	
+	private String firstName;
+	
+	private String middleName;
+	
+	private String lastName;
+	
+	private String dateOfBirth;
+	
+	private String phoneNumber;
+	
+	private String email;
+	
+	private String address;
+	
+	private String pinCode;
+	
+	private String country;
+	
+	private String bankAccountNumber;
+	
+	private String bankName;
+	
+	private String branchName;
+	
+	private String 	ifscCode;
+	
+	private String panNumber; 
+	
+	private String drivinglicenseNumber;
+	
+	public String gender;
+	
+	private String adharNumber;
+	
+	private String dateOfJoining;
+	
+	private String role;
+	
+	private String employeeType;
 
 	public Integer getId() {
 		return id;
@@ -170,54 +219,7 @@ public class EmployeeDTO {
 		this.adharNumber = adharNumber;
 	}
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
 	
-	private String userName;
-
-	private String password;
-	
-	private String firstName;
-	
-	private String middleName;
-	
-	private String lastName;
-	
-	private String dateOfBirth;
-	
-	private String phoneNumber;
-	
-	private String email;
-	
-	private String address;
-	
-	private String pinCode;
-	
-	private String country;
-	
-	private String bankAccountNumber;
-	
-	private String bankName;
-	
-	private String branchName;
-	
-	private String 	ifscCode;
-	
-	private String panNumber; 
-	
-	private String drivinglicenseNumber;
-	
-	public String gender;
-	
-	private String adharNumber;
-	
-	private String dateOfJoining;
-	
-	private String role;
-	
-	private String employeeType;
-
 	public String getRole() {
 		return role;
 	}

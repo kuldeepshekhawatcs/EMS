@@ -22,24 +22,14 @@ import org.hibernate.validator.internal.util.IgnoreJava6Requirement;
 import org.springframework.web.bind.annotation.Mapping;
 
 import com.ems.litrals.Country;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employee")
 public class Employee implements Serializable {
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public void setEmployeeId(Integer employeeId) {
-		this.employeeId = employeeId;
-	}
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer employeeId;
@@ -75,6 +65,7 @@ public class Employee implements Serializable {
 		this.role = role;
 	}
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date getDateOfJoining() {
 		return dateOfJoining;
 	}
@@ -106,4 +97,16 @@ public class Employee implements Serializable {
 	public void setLeaveBalance(Integer leaveBalance) {
 		this.leaveBalance = leaveBalance;
 	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
+	}
+
 }

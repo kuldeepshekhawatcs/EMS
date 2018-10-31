@@ -38,6 +38,11 @@ public class EmployeeTypeServiceImpl implements EmployeeTypeService{
 		else
 			return employeeTypeRepository.findOne(1);
 	}
+
+	@Override
+	public List<String> getDistinctEmployeeType() throws Exception {
+		return employeeTypeRepository.getDistinctEmployeeType();
+	}
 		
 }
 

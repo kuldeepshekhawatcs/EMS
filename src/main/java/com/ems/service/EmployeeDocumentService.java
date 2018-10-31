@@ -14,4 +14,5 @@ public interface EmployeeDocumentService {
 	public List<EmployeeDocuments> getEmployeeAttachmentByEmployeeId(Integer employeeId);
 	public void deleteAttachmentById(Integer employeeId);
 	public EmployeeDocuments update(EmployeeDocuments empDoc);
+	public EmployeeDocuments findById(Integer docId);
 }

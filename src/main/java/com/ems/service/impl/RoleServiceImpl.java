@@ -43,4 +43,9 @@ public class RoleServiceImpl implements RoleService{
 		else
 			return roleRepository.findOne(2);
 	}
+
+	@Override
+	public List<String> getDistinctRole() {
+		return roleRepository.getDistinctRole();
+	}
 }

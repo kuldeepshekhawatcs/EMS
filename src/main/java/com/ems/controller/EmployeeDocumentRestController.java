@@ -1,9 +1,15 @@
 package com.ems.controller;
 
+import java.sql.Blob;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,5 +53,20 @@ public class EmployeeDocumentRestController {
 		 employeeDocService.deleteAttachmentById(documentId);
 		 return Literals.SUCCESS_MESSAGE;
 	}
+	
+	@RequestMapping(value = "/downloadAttachmentById/{docId}", method = RequestMethod.GET)
+	public ResponseEntity downloadAttachmentById(@PathVariable("docId") Integer id) throws Exception{
+			EmployeeDocuments document = employeeDocService.findById(id);
+			Blob blob = document.getDoc();
+			byte[] output = document.getDoc().getBytes(1L, (int)blob.length()); 
+		    HttpHeaders responseHeaders = new HttpHeaders();
+		    responseHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+		    responseHeaders.setContentLength(output.length);
+		    responseHeaders.set("Content-disposition", "attachment; filename=" + document.getDocumentDescription());
+		    return new ResponseEntity(output, responseHeaders, HttpStatus.OK);		
+	}
+	
+	
+	
 
 }
